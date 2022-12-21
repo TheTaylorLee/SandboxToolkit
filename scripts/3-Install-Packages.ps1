@@ -74,8 +74,8 @@ Remove-Item "$env:userprofile\desktop\floss-v2.1.0-windows.zip" -Force
 foreach ($install in $wingetlist) {
     winget install $install --accept-package-agreements --accept-source-agreements
 }
-choco install winpcap, sysinternals, git, tor-browser -y
-choco install python --version 3.11.0 -y
+. "C:\ProgramData\chocolatey\choco.exe" install winpcap, sysinternals, git, tor-browser -y
+. "C:\ProgramData\chocolatey\choco.exe" install python --version 3.11.0 -y
 Copy-Item "C:\ProgramData\Microsoft\Windows\Start Menu\Programs\Wireshark.lnk" $env:userprofile\desktop\Wireshark.lnk
 Copy-Item "C:\Users\WDAGUtilityAccount\AppData\Roaming\Microsoft\Windows\Start Menu\Programs\Visual Studio Code\Visual Studio Code.lnk" $env:userprofile\desktop\VSCode.lnk
 
@@ -84,7 +84,6 @@ Copy-Item "C:\Users\WDAGUtilityAccount\AppData\Roaming\Microsoft\Windows\Start M
 
 # Clone Repositories (Malwareoverview, ...)
 # Important if changing directories to run py scripts to then change back to the github root folder
-New-Item $env:userprofile\desktop\github -ItemType Directory
 Set-Location "$env:userprofile\desktop\github"
 . "C:\Program Files\Git\bin\git.exe" clone https://github.com/alexandreborges/malwoverview
 Set-Location $env:userprofile\desktop\github\malwoverview
