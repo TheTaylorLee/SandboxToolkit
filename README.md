@@ -1,4 +1,4 @@
-# Sandbox-Toolkit
+ # SandboxToolkit
 
 - This is a sandbox vm prep script to be run within windows sandbox vm. Will use 10-20 GB of Free Space and clear when completed.
 - Read host written shell messages for any manual setup steps requiring interaction. These will be presented during pauses in the script.
@@ -42,16 +42,16 @@ Function Invoke-Deploy {
     Set-ExecutionPolicy Unrestricted -Confirm:$false -Force
     [Net.ServicePointManager]::SecurityProtocol = [Net.SecurityProtocolType]::Tls12
     New-Item $env:userprofile\desktop\Github -itemtype directory
-    (New-Object System.Net.WebClient).DownloadFile('https://github.com/TheTaylorLee/Sandbox-Toolkit/archive/refs/heads/master.zip', "$env:userprofile\desktop\github\sandbox-toolkit.zip")
-    Expand-Archive -Path $env:userprofile\desktop\github\sandbox-toolkit.zip $env:userprofile\desktop\github\sandbox-toolkit
-    Remove-Item $env:userprofile\desktop\github\sandbox-toolkit.zip -force
+    (New-Object System.Net.WebClient).DownloadFile('https://github.com/TheTaylorLee/SandboxToolkit/archive/refs/heads/master.zip', "$env:userprofile\desktop\github\SandboxToolkit.zip")
+    Expand-Archive -Path $env:userprofile\desktop\github\SandboxToolkit.zip $env:userprofile\desktop\github\SandboxToolkit
+    Remove-Item $env:userprofile\desktop\github\SandboxToolkit.zip -force
 
     #Installs PSPortable
     Write-Host "Running Install Scripts" -foregroundcolor Green
-    start-process "powershell.exe" -ArgumentList "-executionpolicy unrestricted", "-File $env:userprofile\desktop\github\sandbox-toolkit\Sandbox-Toolkit-master\scripts\1-Install-PSPortable.ps1" -wait
-    start-process "powershell.exe" -ArgumentList "-executionpolicy unrestricted", "-File $env:userprofile\desktop\github\sandbox-toolkit\Sandbox-Toolkit-master\scripts\2-Install-PackageManagers.ps1" -wait
-    start-process "powershell.exe" -ArgumentList "-executionpolicy unrestricted", "-File $env:userprofile\desktop\github\sandbox-toolkit\Sandbox-Toolkit-master\scripts\3-Install-Packages.ps1" -wait
-    start-process "powershell.exe" -ArgumentList "-executionpolicy unrestricted", "-File $env:userprofile\desktop\github\sandbox-toolkit\Sandbox-Toolkit-master\scripts\4-Test-NetworkIsolation.ps1" -wait
+    start-process "powershell.exe" -ArgumentList "-executionpolicy unrestricted", "-File $env:userprofile\desktop\github\SandboxToolkit\SandboxToolkit-master\scripts\1-Install-PSPortable.ps1" -wait
+    start-process "powershell.exe" -ArgumentList "-executionpolicy unrestricted", "-File $env:userprofile\desktop\github\SandboxToolkit\SandboxToolkit-master\scripts\2-Install-PackageManagers.ps1" -wait
+    start-process "powershell.exe" -ArgumentList "-executionpolicy unrestricted", "-File $env:userprofile\desktop\github\SandboxToolkit\SandboxToolkit-master\scripts\3-Install-Packages.ps1" -wait
+    start-process "powershell.exe" -ArgumentList "-executionpolicy unrestricted", "-File $env:userprofile\desktop\github\SandboxToolkit\SandboxToolkit-master\scripts\4-Test-NetworkIsolation.ps1" -wait
 
     # Closeing Statement
     Write-Host "Complete..." -Foregroundcolor Green
