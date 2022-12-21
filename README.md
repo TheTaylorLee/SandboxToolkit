@@ -35,6 +35,7 @@ Function Invoke-Deploy {
     Write-Host "3. When prompted to select a Python app be sure to select the app located at c:\python<X>\python.exe, and select always" -ForegroundColor Yellow
     Write-Host "4. When asked to pick a default browser choose Chrome. Useful if using Nordvpn." -ForegroundColor Cyan
     Write-Host "5. Be patient some steps take longer than others." -ForegroundColor Cyan
+    Write-Host "6. When presented install wizards, click through" -ForegroundColor Cyan
     Pause
 
     # Clone repo and scripts for running
@@ -43,6 +44,7 @@ Function Invoke-Deploy {
     New-Item $env:userprofile\desktop\Github -itemtype directory
     (New-Object System.Net.WebClient).DownloadFile('https://github.com/TheTaylorLee/Sandbox-Toolkit/archive/refs/heads/master.zip', "$env:userprofile\desktop\github\sandbox-toolkit.zip")
     Expand-Archive -Path $env:userprofile\desktop\github\sandbox-toolkit.zip $env:userprofile\desktop\github\sandbox-toolkit
+    Remove-Item $env:userprofile\desktop\github\sandbox-toolkit.zip -force
 
     #Installs PSPortable
     Write-Host "Running Install Scripts" -foregroundcolor Green
@@ -53,5 +55,5 @@ Function Invoke-Deploy {
 
     # Closeing Statement
     Write-Host "Complete..." -Foregroundcolor Green
-}; Invoke-Deploy
+}; Clear-Host; Invoke-Deploy
 ```
