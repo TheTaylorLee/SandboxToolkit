@@ -23,9 +23,16 @@
 - vscode (IDE)
 
 # How to Use
-- PUT IN A SECTION HERE THAT DOWNLOADS THE FILES
-
+- First Clone the repo
 - Run this in an Admin Powershell Window
 ```Powershell
-start-process "powershell.exe" -ArgumentList "-executionpolicy unrestricted", "-File $env:userprofile\Desktop\github\Sandbox-Toolkit\script\1-Install-PSPortable.ps1"
+# Clone repo and scripts for running
+Set-ExecutionPolicy Unrestricted -Confirm:$false -Force
+[Net.ServicePointManager]::SecurityProtocol = [Net.SecurityProtocolType]::Tls12
+New-Item $env:userprofile\desktop\Github -itemtype directory
+(New-Object System.Net.WebClient).DownloadFile('https://github.com/TheTaylorLee/Sandbox-Toolkit/archive/refs/heads/master.zip', "$env:userprofile\desktop\github\sandbox-toolkit.zip")
+Expand-Archive -Path $env:userprofile\desktop\github\sandbox-toolkit.zip $env:userprofile\desktop\github\sandbox-toolkit
+
+#Installs PSPortable
+start-process "powershell.exe" -ArgumentList "-executionpolicy unrestricted", "-File $env:userprofile\desktop\github\sandbox-toolkit\Sandbox-Toolkit-master\scripts\1-Install-PSPortable.ps1" -wait
 ```
