@@ -25,14 +25,33 @@
 # How to Use
 - First Clone the repo
 - Run this in an Admin Powershell Window
-```Powershell
-# Clone repo and scripts for running
-Set-ExecutionPolicy Unrestricted -Confirm:$false -Force
-[Net.ServicePointManager]::SecurityProtocol = [Net.SecurityProtocolType]::Tls12
-New-Item $env:userprofile\desktop\Github -itemtype directory
-(New-Object System.Net.WebClient).DownloadFile('https://github.com/TheTaylorLee/Sandbox-Toolkit/archive/refs/heads/master.zip', "$env:userprofile\desktop\github\sandbox-toolkit.zip")
-Expand-Archive -Path $env:userprofile\desktop\github\sandbox-toolkit.zip $env:userprofile\desktop\github\sandbox-toolkit
 
-#Installs PSPortable
-start-process "powershell.exe" -ArgumentList "-executionpolicy unrestricted", "-File $env:userprofile\desktop\github\sandbox-toolkit\Sandbox-Toolkit-master\scripts\1-Install-PSPortable.ps1" -wait
+```Powershell
+Function Invoke-Deploy {
+    # Write Messages
+    Write-Host "READ THESE INSTRUCTIONS" -ForegroundColor Magenta
+    Write-Host "1. After font install, set meslo font as the default font for the shell" -ForegroundColor Green
+    Write-Host "2. When all scripts finish running, it's best to close powershell, open pinned ps7x64, and use that shell. This pulls all installed exe's in path." -ForegroundColor yellow
+    Write-Host "3. When prompted to select a Python app be sure to select the app located at c:\python<X>\python.exe, and select always" -ForegroundColor Yellow
+    Write-Host "4. When asked to pick a default browser choose Chrome. Useful if using Nordvpn." -ForegroundColor Cyan
+    Write-Host "5. Be patient some steps take longer than others." -ForegroundColor Cyan
+    Pause
+
+    # Clone repo and scripts for running
+    Set-ExecutionPolicy Unrestricted -Confirm:$false -Force
+    [Net.ServicePointManager]::SecurityProtocol = [Net.SecurityProtocolType]::Tls12
+    New-Item $env:userprofile\desktop\Github -itemtype directory
+    (New-Object System.Net.WebClient).DownloadFile('https://github.com/TheTaylorLee/Sandbox-Toolkit/archive/refs/heads/master.zip', "$env:userprofile\desktop\github\sandbox-toolkit.zip")
+    Expand-Archive -Path $env:userprofile\desktop\github\sandbox-toolkit.zip $env:userprofile\desktop\github\sandbox-toolkit
+
+    #Installs PSPortable
+    Write-Host "Running Install Scripts" -foregroundcolor Green
+    start-process "powershell.exe" -ArgumentList "-executionpolicy unrestricted", "-File $env:userprofile\desktop\github\sandbox-toolkit\Sandbox-Toolkit-master\scripts\1-Install-PSPortable.ps1" -wait
+    start-process "powershell.exe" -ArgumentList "-executionpolicy unrestricted", "-File $env:userprofile\desktop\github\sandbox-toolkit\Sandbox-Toolkit-master\scripts\2-Install-PackageManagers.ps1" -wait
+    start-process "powershell.exe" -ArgumentList "-executionpolicy unrestricted", "-File $env:userprofile\desktop\github\sandbox-toolkit\Sandbox-Toolkit-master\scripts\3-Install-Packages.ps1" -wait
+    start-process "powershell.exe" -ArgumentList "-executionpolicy unrestricted", "-File $env:userprofile\desktop\github\sandbox-toolkit\Sandbox-Toolkit-master\scripts\4-Test-NetworkIsolation.ps1" -wait
+
+    # Closeing Statement
+    Write-Host "Complete..." -Foregroundcolor Green
+}; Invoke-Deploy
 ```
