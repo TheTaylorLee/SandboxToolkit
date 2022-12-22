@@ -32,11 +32,11 @@ Function Invoke-Deploy {
     Write-Host "    READ THESE NOTES" -ForegroundColor Yellow
     Write-Host "
     1. After font install, set meslo font as the default font for the shell
-    2. When all scripts finish running, it's best to close powershell, open pinned ps7x64, and use that shell. This pulls all installed exe's in path.
+    2. When all scripts finish running, it's best to close powershell, and use pwsh or shell of choice. This ensures all installed exe's are in path.
     3. When asked to pick a default browser choose Chrome. Useful if using Nordvpn.
     4. Be patient some steps take longer than others.
     5. When presented install wizards, click through
-    6. When the Powershell 7 (pwsh.exe) window is shown, pin it to the taskbar, and close it or the next install step will hang." -ForegroundColor Green
+    " -ForegroundColor Green
     Pause
 
     # Clone repo and scripts for running
