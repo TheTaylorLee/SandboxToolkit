@@ -47,7 +47,16 @@ https://github.com/TheTaylorLee/AdminToolbox
         }
     }
 }
+
+# Tls settings
 [Net.ServicePointManager]::SecurityProtocol = [Net.SecurityProtocolType]::Tls12
+
+# Configure explorer view
+reg add HKCU\Software\Microsoft\Windows\CurrentVersion\Explorer\Advanced /v HideFileExt /t REG_DWORD /d 0 /f
+reg add HKCU\Software\Microsoft\Windows\CurrentVersion\Explorer\Advanced /v Hidden /t REG_DWORD /d 1 /f
+reg add HKCU\Software\Microsoft\Windows\CurrentVersion\Explorer\Advanced /v ShowSuperHidden /t REG_DWORD /d 1 /f
+taskkill.exe /im explorer.exe /f
+explorer.exe
 
 # Install Fonts
 . "C:\ProgramData\PS7x64\PS7-x64\profile_snippets\font\Meslo LG M Regular Nerd Font Complete Mono.ttf"
