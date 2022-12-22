@@ -88,10 +88,17 @@ foreach ($install in $wingetlist) {
 Copy-Item "C:\ProgramData\Microsoft\Windows\Start Menu\Programs\Wireshark.lnk" $env:userprofile\desktop\Wireshark.lnk
 Copy-Item "C:\Users\WDAGUtilityAccount\AppData\Roaming\Microsoft\Windows\Start Menu\Programs\Visual Studio Code\Visual Studio Code.lnk" $env:userprofile\desktop\VSCode.lnk
 
-# Install pywhat
-. "C:\Python311\Scripts\pip3.exe" install pywhat
-
 # Clone Repositories (Malwareoverview, ...)
 # Important if changing directories to run py scripts to then change back to the github root folder
 Set-Location "$env:userprofile\desktop\github"
 . "C:\Program Files\Git\bin\git.exe" clone https://github.com/alexandreborges/malwoverview
+
+# Instructs to set python as default app
+Write-Host "
+You must set the file association for python right now.
+    In the just opened explorer window right click a file with a .py extension and open it's properties.
+    Change the default app to open with c:\python<X>\python.exe, and select always
+    Then close that explorer window and continue through the pause
+" -ForegroundColor Yellow
+cmd /c start %windir%\explorer.exe $env:userprofile\desktop\github\malwoverview
+Pause
