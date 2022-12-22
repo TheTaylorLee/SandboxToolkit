@@ -51,7 +51,6 @@ Function Invoke-Deploy {
     start-process "powershell.exe" -ArgumentList "-executionpolicy unrestricted", "-File $env:userprofile\desktop\github\SandboxToolkit\SandboxToolkit-master\scripts\1-Install-PSPortable.ps1" -wait
     start-process "powershell.exe" -ArgumentList "-executionpolicy unrestricted", "-File $env:userprofile\desktop\github\SandboxToolkit\SandboxToolkit-master\scripts\2-Install-PackageManagers.ps1" -wait
     start-process "powershell.exe" -ArgumentList "-executionpolicy unrestricted", "-File $env:userprofile\desktop\github\SandboxToolkit\SandboxToolkit-master\scripts\3-Install-Packages.ps1" -wait
-    start-process "powershell.exe" -ArgumentList "-executionpolicy unrestricted", "-File $env:userprofile\desktop\github\SandboxToolkit\SandboxToolkit-master\scripts\4-Test-NetworkIsolation.ps1" -wait
 
     # Closeing Statement
     Write-Host "Complete..." -Foregroundcolor Green
