@@ -103,16 +103,29 @@ You must set the file association for python right now.
 cmd /c start %windir%\explorer.exe $env:userprofile\desktop\github\malwoverview
 Pause
 
-#Run other scripts
-Start-Process "powershell.exe" -ArgumentList "-executionpolicy unrestricted", "-File $env:userprofile\desktop\github\SandboxToolkit\SandboxToolkit-master\scripts\4-Run-PythonScripts.ps1"
-Start-Process "powershell.exe" -ArgumentList "-executionpolicy unrestricted", "-File $env:userprofile\desktop\github\SandboxToolkit\SandboxToolkit-master\scripts\5-Install-NordVPN.ps1"
+# Install pywhat
+. "C:\Python311\Scripts\pip3.exe" install pywhat
+
+# Install VPN
+Write-Warning "Wait for installs to complete then hit enter to continue through the pause!"
+Set-Location $env:userprofile\downloads
+curl.exe https://downloads.nordcdn.com/apps/windows/NordVPN/latest/NordVPNSetup.exe --output vpn.exe
+.\vpn.exe /SP- /VERYSILENT /NORESTART /FORCECLOSEAPPLICATIONS
+Pause
+Write-Host "Login to the VPN, set network isolation settings, connection > invisible on LAN, vpn killswitch, and disable threat protection!" -ForegroundColor Green
+Write-Host "Continue once vpn is connected"
+. "C:\Program Files\NordVPN\Nordvpn.exe"
+Pause
 
 # Closeing Statement
 Write-Host "
     Completed after the Nordvpn installer and setup is done. All open windows can now be closed and tools used.
 
     To use malwoverview, open a new powershell window and run the following.
-        Set-Location $env:userprofile\desktop\github\malwoverview\malwareoverview
-        .\malwareoverview.py" -ForegroundColor Green
+        Set-Location $env:userprofile\desktop\github\malwoverview
+        .\setup.py build
+        .\setup.py install
+        Set-Location $env:userprofile\desktop\github\malwoverview\malwoverview
+        .\malwoverview.py" -ForegroundColor Green
 Pause
 exit
