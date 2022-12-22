@@ -103,7 +103,7 @@ Write-Host "To use malwareoverview check out the website. The build is already b
 Pause
 
 # Install VPN
-Set-Location $env:userprofile\desktop
+Set-Location $env:userprofile\downloads
 curl.exe https://downloads.nordcdn.com/apps/windows/NordVPN/latest/NordVPNSetup.exe --output vpn.exe
 .\vpn.exe /SP- /VERYSILENT /NORESTART /FORCECLOSEAPPLICATIONS
 
