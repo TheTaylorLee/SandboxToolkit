@@ -36,7 +36,7 @@ Function Invoke-Deploy {
     3. When asked to pick a default browser choose Chrome. Useful if using Nordvpn.
     4. Be patient some steps take longer than others.
     5. When presented install wizards, click through
-    6. When the Powershell 7 (pwsh.exe) window is shown, close it or the next install step will hang." -ForegroundColor Green
+    6. When the Powershell 7 (pwsh.exe) window is shown, pin it to the taskbar, and close it or the next install step will hang." -ForegroundColor Green
     Pause
 
     # Clone repo and scripts for running
