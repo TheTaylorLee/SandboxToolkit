@@ -79,7 +79,7 @@ Copy-Item $env:userprofile\desktop\Floss\floss.exe $env:systemroot\system32
 Remove-Item "$env:userprofile\desktop\floss-v2.1.0-windows.zip" -Force
 
 #Install Tools
-[string[]]$wingetlist = "lockhunter", "Google Chrome", "wireshark", "vscode", "JanDeDobbeleer.OhMyPosh"
+[string[]]$wingetlist = "Google Chrome", "JanDeDobbeleer.OhMyPosh", "lockhunter", "vscode", "wireshark"
 foreach ($install in $wingetlist) {
     winget install $install --accept-package-agreements --accept-source-agreements
 }
