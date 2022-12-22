@@ -5,3 +5,4 @@ Set-Location $env:userprofile\desktop\github\malwoverview
 
 # Install pywhat
 . "C:\Python311\Scripts\pip3.exe" install pywhat
+exit

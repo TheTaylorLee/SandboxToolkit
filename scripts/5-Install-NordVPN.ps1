@@ -13,3 +13,4 @@ Write-Host "Login to the VPN, set network isolation settings, connection > invis
 # Confirm Network is isolated
 $gateway = Read-Host "Write your default gateway. Once it is not pinging your network should be isolated. ex: 192.168.2.1"
 ping.exe $gateway -t
+exit

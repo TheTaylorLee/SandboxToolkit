@@ -115,3 +115,4 @@ Write-Host "
         Set-Location $env:userprofile\desktop\github\malwoverview\malwareoverview
         .\malwareoverview.py" -ForegroundColor Green
 Pause
+exit
