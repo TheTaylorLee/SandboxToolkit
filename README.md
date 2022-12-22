@@ -19,7 +19,7 @@
     - Malware overview https://github.com/alexandreborges/malwoverview (A python tool that does a large overview of a file or set of files)
 - Retoolkit https://github.com/mentebinaria/retoolkit/releases/tag/2022.10 (Malware Analysis tools)
 - SysInternals (Large suite of microsoft tools)
-- torbrowser (For security research of tor sites)
+- torbrowser (For security research of tor sites) IF FAILING PACKAGE INSTALL LINK MIGHT BE OUTDATED. NO GOOD FIX FOR THIS.
 - Wireshark - winpcap (Packet Capturing)
 - vscode (IDE)
 
