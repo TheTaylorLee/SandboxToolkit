@@ -1,7 +1,7 @@
  # SandboxToolkit
 
 - This is a sandbox vm prep script to be run within windows sandbox vm. Will use 10-20 GB of Free Space and clear when completed.
-- Read host written shell messages for any manual setup steps requiring interaction. These will be presented during pauses in the script.
+- Read written shell messages for any manual setup steps requiring interaction. These will be presented during pauses in the script.
 - THE PROCESS WILL AT TIMES SEEMS STUCK, BUT IT'S NOT.
 
 ## Installed Tools
@@ -23,12 +23,11 @@
 - vscode (IDE)
 
 # How to Use
-- First Clone the repo
 - Run this in an Admin Powershell Window
 
 ```Powershell
 Function Invoke-Deploy {
-    # Write Messages
+    # Opening Statement
     Write-Host "    READ THESE NOTES" -ForegroundColor Yellow
     Write-Host "
     1. After font install, set meslo font as the default font for the shell
@@ -47,7 +46,7 @@ Function Invoke-Deploy {
     Expand-Archive -Path $env:userprofile\desktop\github\SandboxToolkit.zip $env:userprofile\desktop\github\SandboxToolkit
     Remove-Item $env:userprofile\desktop\github\SandboxToolkit.zip -force
 
-    #Installs PSPortable
+    #Runs scripts
     Write-Host "Running Install Scripts" -foregroundcolor Green
     start-process "powershell.exe" -ArgumentList "-executionpolicy unrestricted", "-File $env:userprofile\desktop\github\SandboxToolkit\SandboxToolkit-master\scripts\1-Install-PSPortable.ps1" -wait
     start-process "powershell.exe" -ArgumentList "-executionpolicy unrestricted", "-File $env:userprofile\desktop\github\SandboxToolkit\SandboxToolkit-master\scripts\2-Install-PackageManagers.ps1" -wait
