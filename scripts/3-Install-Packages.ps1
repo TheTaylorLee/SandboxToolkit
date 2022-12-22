@@ -102,3 +102,16 @@ You must set the file association for python right now.
 " -ForegroundColor Yellow
 cmd /c start %windir%\explorer.exe $env:userprofile\desktop\github\malwoverview
 Pause
+
+#Run other scripts
+Start-Process "powershell.exe" -ArgumentList "-executionpolicy unrestricted", "-File $env:userprofile\desktop\github\SandboxToolkit\SandboxToolkit-master\scripts\4-Run-PythonScripts.ps1"
+Start-Process "powershell.exe" -ArgumentList "-executionpolicy unrestricted", "-File $env:userprofile\desktop\github\SandboxToolkit\SandboxToolkit-master\scripts\5-Install-NordVPN.ps1"
+
+# Closeing Statement
+Write-Host "
+    Completed after the Nordvpn installer and setup is done. All open windows can now be closed and tools used.
+
+    To use malwoverview, open a new powershell window and run the following.
+        Set-Location $env:userprofile\desktop\github\malwoverview\malwareoverview
+        .\malwareoverview.py" -ForegroundColor Green
+Pause
