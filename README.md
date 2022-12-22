@@ -42,10 +42,10 @@ Function Invoke-Deploy {
     # Clone repo and scripts for running
     Set-ExecutionPolicy Unrestricted -Confirm:$false -Force
     [Net.ServicePointManager]::SecurityProtocol = [Net.SecurityProtocolType]::Tls12
-    New-Item $env:userprofile\desktop\Github -itemtype directory
+    New-Item $env:userprofile\desktop\Github -itemtype directory | out-null
     (New-Object System.Net.WebClient).DownloadFile('https://github.com/TheTaylorLee/SandboxToolkit/archive/refs/heads/master.zip', "$env:userprofile\desktop\github\SandboxToolkit.zip")
     Expand-Archive -Path $env:userprofile\desktop\github\SandboxToolkit.zip $env:userprofile\desktop\github\SandboxToolkit
-    Remove-Item $env:userprofile\desktop\github\SandboxToolkit.zip -force
+    Remove-Item $env:userprofile\desktop\github\SandboxToolkit.zip -force | out-null
 
     #Runs scripts
     Write-Host "Running Install Scripts" -foregroundcolor Green
