@@ -2,6 +2,7 @@
 
 - This is a sandbox vm prep script to be run within windows sandbox vm. Will use 10-20 GB of Free Space and clear when completed.
 - Read written shell messages for any manual setup steps requiring interaction. These will be presented during pauses in the script.
+- Scripts are ordered in such a way as to avoid issues with any dependencies.
 - THE PROCESS WILL AT TIMES SEEMS STUCK, BUT IT'S NOT.
 
 ## Installed Tools
@@ -50,9 +51,15 @@ Function Invoke-Deploy {
     Write-Host "Running Install Scripts" -foregroundcolor Green
     start-process "powershell.exe" -ArgumentList "-executionpolicy unrestricted", "-File $env:userprofile\desktop\github\SandboxToolkit\SandboxToolkit-master\scripts\1-Install-PSPortable.ps1" -wait
     start-process "powershell.exe" -ArgumentList "-executionpolicy unrestricted", "-File $env:userprofile\desktop\github\SandboxToolkit\SandboxToolkit-master\scripts\2-Install-PackageManagers.ps1" -wait
-    start-process "powershell.exe" -ArgumentList "-executionpolicy unrestricted", "-File $env:userprofile\desktop\github\SandboxToolkit\SandboxToolkit-master\scripts\3-Install-Packages.ps1"
+    start-process "powershell.exe" -ArgumentList "-executionpolicy unrestricted", "-File $env:userprofile\desktop\github\SandboxToolkit\SandboxToolkit-master\scripts\3-Install-Packages.ps1" -wait
+    start-process "powershell.exe" -ArgumentList "-executionpolicy unrestricted", "-File $env:userprofile\desktop\github\SandboxToolkit\SandboxToolkit-master\scripts\4-Run-PythonScripts.ps1" -wait
+    start-process "powershell.exe" -ArgumentList "-executionpolicy unrestricted", "-File $env:userprofile\desktop\github\SandboxToolkit\SandboxToolkit-master\scripts\5-Install-NordVPN.ps1"
 
     # Closeing Statement
-    Write-Host "Complete..." -Foregroundcolor Green
+    Write-Host "
+    Complete...
+    To use malwoverview, open a new powershell window and run the following.
+        Set-Location $env:userprofile\desktop\github\malwoverview\malwareoverview
+        .\malwareoverview.py" -Foregroundcolor Green
 }; Clear-Host; Invoke-Deploy
 ```
