@@ -50,44 +50,16 @@ https://github.com/TheTaylorLee/AdminToolbox
     }
 }
 
-function Set-ENVariables {
-    ##Choco
-    $p = [Environment]::GetEnvironmentVariable("Path")
-    $exepath = "C:\ProgramData\chocolatey\bin\choco.exe"
-    $p += ";$exepath"
-    [Environment]::SetEnvironmentVariable("Path", $p)
-    $oldpath = (Get-ItemProperty -Path 'Registry::HKEY_LOCAL_MACHINE\System\CurrentControlSet\Control\Session Manager\Environment' -Name PATH).path
-    $newpath = "$oldpath;$exepath"
-    Set-ItemProperty -Path 'Registry::HKEY_LOCAL_MACHINE\System\CurrentControlSet\Control\Session Manager\Environment' -Name PATH -Value $newpath
-
-    ##Git
-    $p = [Environment]::GetEnvironmentVariable("Path")
-    $exepath = "C:\Program Files\Git\bin\git.exe"
-    $p += ";$exepath"
-    [Environment]::SetEnvironmentVariable("Path", $p)
-    $oldpath = (Get-ItemProperty -Path 'Registry::HKEY_LOCAL_MACHINE\System\CurrentControlSet\Control\Session Manager\Environment' -Name PATH).path
-    $newpath = "$oldpath;$exepath"
-    Set-ItemProperty -Path 'Registry::HKEY_LOCAL_MACHINE\System\CurrentControlSet\Control\Session Manager\Environment' -Name PATH -Value $newpath
-    $p = [Environment]::GetEnvironmentVariable("Path")
-    $exepath = "C:\Program Files\Git\cmd"
-    $p += ";$exepath"
-    [Environment]::SetEnvironmentVariable("Path", $p)
-    $oldpath = (Get-ItemProperty -Path 'Registry::HKEY_LOCAL_MACHINE\System\CurrentControlSet\Control\Session Manager\Environment' -Name PATH).path
-    $newpath = "$oldpath;$exepath"
-    Set-ItemProperty -Path 'Registry::HKEY_LOCAL_MACHINE\System\CurrentControlSet\Control\Session Manager\Environment' -Name PATH -Value $newpath
-
-    ##Floss
-    $p = [Environment]::GetEnvironmentVariable("Path")
-    $exepath = "c:\windows\system32\floss.exe"
-    $p += ";$exepath"
-    [Environment]::SetEnvironmentVariable("Path", $p)
-    $oldpath = (Get-ItemProperty -Path 'Registry::HKEY_LOCAL_MACHINE\System\CurrentControlSet\Control\Session Manager\Environment' -Name PATH).path
-    $newpath = "$oldpath;$exepath"
-    Set-ItemProperty -Path 'Registry::HKEY_LOCAL_MACHINE\System\CurrentControlSet\Control\Session Manager\Environment' -Name PATH -Value $newpath
-}
-
 # Tls settings
 [Net.ServicePointManager]::SecurityProtocol = [Net.SecurityProtocolType]::Tls12
+
+# Configure explorer view
+Write-Host "[+] Unhiding extensions, files/folders, and protected files" -ForegroundColor Green
+reg add HKCU\Software\Microsoft\Windows\CurrentVersion\Explorer\Advanced /v HideFileExt /t REG_DWORD /d 0 /f
+reg add HKCU\Software\Microsoft\Windows\CurrentVersion\Explorer\Advanced /v Hidden /t REG_DWORD /d 1 /f
+reg add HKCU\Software\Microsoft\Windows\CurrentVersion\Explorer\Advanced /v ShowSuperHidden /t REG_DWORD /d 1 /f
+taskkill.exe /im explorer.exe /f
+explorer.exe
 
 # Install Fonts
 Write-Host "[+] Installing Fonts" -ForegroundColor Green
@@ -131,14 +103,6 @@ Write-Host "[+] Cloning malwareoverview" -ForegroundColor Green
 Set-Location "$env:userprofile\desktop\github"
 . "C:\Program Files\Git\bin\git.exe" clone https://github.com/alexandreborges/malwoverview
 
-# Configure explorer view
-Write-Host "[+] Unhiding extensions, files/folders, and protected files" -ForegroundColor Green
-reg add HKCU\Software\Microsoft\Windows\CurrentVersion\Explorer\Advanced /v HideFileExt /t REG_DWORD /d 0 /f
-reg add HKCU\Software\Microsoft\Windows\CurrentVersion\Explorer\Advanced /v Hidden /t REG_DWORD /d 1 /f
-reg add HKCU\Software\Microsoft\Windows\CurrentVersion\Explorer\Advanced /v ShowSuperHidden /t REG_DWORD /d 1 /f
-taskkill.exe /im explorer.exe /f
-explorer.exe
-
 # Instructs to set python as default app
 Write-Host "[+] Set Default Python App" -ForegroundColor Green
 Write-Host "
@@ -153,10 +117,6 @@ Pause
 # Install pywhat
 Write-Host "[+] Installing pyWhat" -ForegroundColor Green
 . "C:\Python311\Scripts\pip3.exe" install pywhat
-
-# Explicit Path Variables. A fix to an issue i've seen with sometimes the folder path variables not loading these executables
-Write-Host "[+] Adding Explicit Environment Variables" -ForegroundColor Green
-Set-ENVariables
 
 # Install VPN
 Write-Host "[+] Installing nordvpn" -ForegroundColor Green
