@@ -1,6 +1,7 @@
  # SandboxToolkit
 
-- This is a sandbox vm prep script to be run within windows sandbox vm. Will use 10-20 GB of Free Space and clear when completed.
+- ONLY RUN THIS IN A VOLATILE VM
+- This is a sandbox vm prep script to be run within Windows Sandbox vm. Will use 10-20 GB of Free Space and clear when completed.
 - The intended purpose is for malware analysis
 - Written shell messages will be shown for any manual setup steps requiring interaction. These will be presented during pauses in the script.
 - Scripts are ordered in such a way as to avoid issues with any dependencies.
