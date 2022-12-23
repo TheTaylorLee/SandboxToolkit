@@ -27,7 +27,10 @@
 - Run this in an Admin Powershell Window
 
 ```Powershell
+New-Item $env:userprofile\desktop\logs -itemtype Directory
+Start-Transcript $env:userprofile\desktop\logs\0-DeployFunction.log
 Function Invoke-Deploy {
+
     # Opening Statement
     Write-Host "    READ THESE NOTES" -ForegroundColor Yellow
     Write-Host "

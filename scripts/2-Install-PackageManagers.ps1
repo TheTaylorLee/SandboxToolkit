@@ -1,3 +1,5 @@
+Start-Transcript "$env:userprofile\desktop\logs\2-Install-PackageManagers.log"
+
 [Net.ServicePointManager]::SecurityProtocol = [Net.SecurityProtocolType]::Tls12
 
 #Winget

@@ -1,3 +1,5 @@
+Start-Transcript "$env:userprofile\desktop\logs\1-Install-PSPortable.log"
+
 # Set Execution Policy
 Set-ExecutionPolicy Unrestricted -Confirm:$false -Force
 

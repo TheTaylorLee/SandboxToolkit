@@ -1,3 +1,5 @@
+Start-Transcript "$env:userprofile\desktop\logs\3-Install-Packages.log"
+
 function Invoke-Unzip {
     <#
 .DESCRIPTION
