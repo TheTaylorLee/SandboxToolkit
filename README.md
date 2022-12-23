@@ -1,27 +1,28 @@
  # SandboxToolkit
 
 - This is a sandbox vm prep script to be run within windows sandbox vm. Will use 10-20 GB of Free Space and clear when completed.
-- Read written shell messages for any manual setup steps requiring interaction. These will be presented during pauses in the script.
+- The intended purpose is for malware analysis
+- Written shell messages will be shown for any manual setup steps requiring interaction. These will be presented during pauses in the script.
 - Scripts are ordered in such a way as to avoid issues with any dependencies.
-- THE PROCESS WILL AT TIMES SEEMS STUCK, BUT IT'S NOT.
+- The process may seems stuck at times, but it's not. Look for other windows requiring steps. Read the shell it might offer a clue.
 
 ## Installed Tools
 
-- DIE - Detect it Easy (File analysis tool)
-- Floss (A string deobfuscation and extraction tool)
-- git (for cloning repos)
-- Google Chrome (Alternative to edge which doesn't seem to work while the vpn is running in sandbox)
-- lockhunter (force close running files)
-- Nordvpn (vpn for network isolation)
-- Oh-My-Posh (For the pwsh terminal)
-- Python
-    - What.exe https://github.com/bee-san/pyWhat (Can identity anything. Give it a pcap and let it find stuff)
-    - Malware overview https://github.com/alexandreborges/malwoverview (A python tool that does a large overview of a file or set of files)
-- Retoolkit https://github.com/mentebinaria/retoolkit/releases/tag/2022.10 (Malware Analysis tools)
-- SysInternals (Large suite of microsoft tools)
-- torbrowser (For security research of tor sites) IF FAILING PACKAGE INSTALL LINK MIGHT BE OUTDATED. NO GOOD FIX FOR THIS.
-- Wireshark - winpcap (Packet Capturing)
-- vscode (IDE)
+- [DIE - Detect it Easy](https://github.com/horsicq/Detect-It-Easy)
+- [Floss - FLARE Obfuscated String Solver](https://github.com/mandiant/flare-floss)
+- [git](https://git-scm.com/)
+- [Google Chrome](https://www.google.com/chrome/)
+- [Lockhunter](https://lockhunter.com/)
+- [Nordvpn](https://nordvpn.com/nord-deal-site/)
+- [Oh-My-Posh](https://ohmyposh.dev/)
+- [Python](https://www.python.org/)
+    - [pyWhat](https://github.com/bee-san/pyWhat)
+    - [Malwareoverview](https://github.com/alexandreborges/malwoverview)
+- [Retoolkit](https://github.com/mentebinaria/retoolkit)
+- [SysInternals](https://learn.microsoft.com/en-us/sysinternals/)
+- [Tor](https://www.torproject.org/download/)
+- [Wireshark - winpcap](https://www.wireshark.org/)
+- [vscode](https://code.visualstudio.com/)
 
 # How to Use
 - Run this in an Admin Powershell Window
