@@ -133,7 +133,7 @@ Pause
 # Closeing Statement
 Write-Host "[+] Completed after the Nordvpn installer and setup is done. All open windows can now be closed and tools used" -ForegroundColor Green
 Write-Host "
-    To use malwoverview, open a new powershell window and run the following.
+    To use malwoverview, open a new powershell window and run the following. If it doesn't run, then you didn't properly select the default python app to use in previous steps.
         Set-Location $env:userprofile\desktop\github\malwoverview
         .\setup.py build
         .\setup.py install
