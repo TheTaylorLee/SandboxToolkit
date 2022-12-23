@@ -139,5 +139,3 @@ Write-Host "
         .\setup.py install
         Set-Location $env:userprofile\desktop\github\malwoverview\malwoverview
         .\malwoverview.py" -ForegroundColor Green
-Pause
-exit
