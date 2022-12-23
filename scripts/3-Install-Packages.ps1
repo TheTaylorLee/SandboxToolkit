@@ -51,16 +51,8 @@ https://github.com/TheTaylorLee/AdminToolbox
 # Tls settings
 [Net.ServicePointManager]::SecurityProtocol = [Net.SecurityProtocolType]::Tls12
 
-# Configure explorer view
-Write-Host "[+] Unhiding extensions, files/folders, and protected files" -ForegroundColor Green
-reg add HKCU\Software\Microsoft\Windows\CurrentVersion\Explorer\Advanced /v HideFileExt /t REG_DWORD /d 0 /f
-reg add HKCU\Software\Microsoft\Windows\CurrentVersion\Explorer\Advanced /v Hidden /t REG_DWORD /d 1 /f
-reg add HKCU\Software\Microsoft\Windows\CurrentVersion\Explorer\Advanced /v ShowSuperHidden /t REG_DWORD /d 1 /f
-taskkill.exe /im explorer.exe /f
-explorer.exe
-Write-Host "[+] Installing Fonts" -ForegroundColor Green
-
 # Install Fonts
+Write-Host "[+] Installing Fonts" -ForegroundColor Green
 . "C:\ProgramData\PS7x64\PS7-x64\profile_snippets\font\Meslo LG M Regular Nerd Font Complete Mono.ttf"
 
 #Install Detect it Easy (DIE)
@@ -71,8 +63,9 @@ Remove-Item $env:userprofile\desktop\die_win64_qt6_portable_3.06.zip -Force
 
 # Install Retoolkit
 ##Using .net method to download file because it's quicker and works with github
-Write-Host "[+] Installing Retoolkit" -ForegroundColor Green
+Write-Host "[+] Downloading Retoolkit" -ForegroundColor Green
 (New-Object System.Net.WebClient).DownloadFile('https://github.com/mentebinaria/retoolkit/releases/download/2022.10/retoolkit_2022.10_setup.exe', "$env:userprofile\downloads\retoolkit_2022.10_setup.exe")
+Write-Host "[+] Installing Retoolkit" -ForegroundColor Green
 Start-Process $env:userprofile\downloads\retoolkit_2022.10_setup.exe -Wait
 Remove-Item $env:userprofile\Desktop\cmd.lnk -Force
 
@@ -99,6 +92,14 @@ Copy-Item "C:\Users\WDAGUtilityAccount\AppData\Roaming\Microsoft\Windows\Start M
 Write-Host "[+] Cloning malwareoverview" -ForegroundColor Green
 Set-Location "$env:userprofile\desktop\github"
 . "C:\Program Files\Git\bin\git.exe" clone https://github.com/alexandreborges/malwoverview
+
+# Configure explorer view
+Write-Host "[+] Unhiding extensions, files/folders, and protected files" -ForegroundColor Green
+reg add HKCU\Software\Microsoft\Windows\CurrentVersion\Explorer\Advanced /v HideFileExt /t REG_DWORD /d 0 /f
+reg add HKCU\Software\Microsoft\Windows\CurrentVersion\Explorer\Advanced /v Hidden /t REG_DWORD /d 1 /f
+reg add HKCU\Software\Microsoft\Windows\CurrentVersion\Explorer\Advanced /v ShowSuperHidden /t REG_DWORD /d 1 /f
+taskkill.exe /im explorer.exe /f
+explorer.exe
 
 # Instructs to set python as default app
 Write-Host "[+] Set Default Python App" -ForegroundColor Green
