@@ -118,6 +118,42 @@ Pause
 Write-Host "[+] Installing pyWhat" -ForegroundColor Green
 . "C:\Python311\Scripts\pip3.exe" install pywhat
 
+# Explicit Path Variables. A fix to an issue i've seen with sometimes the folder path variables not loading these executables
+Write-Host "[+] Adding Explicit Environment Variables" -ForegroundColor Green
+##Choco
+$p = [Environment]::GetEnvironmentVariable("Path")
+$exepath = "C:\ProgramData\chocolatey\bin\choco.exe"
+$p += ";$exepath"
+[Environment]::SetEnvironmentVariable("Path", $p)
+$oldpath = (Get-ItemProperty -Path 'Registry::HKEY_LOCAL_MACHINE\System\CurrentControlSet\Control\Session Manager\Environment' -Name PATH).path
+$newpath = "$oldpath;$exepath"
+Set-ItemProperty -Path 'Registry::HKEY_LOCAL_MACHINE\System\CurrentControlSet\Control\Session Manager\Environment' -Name PATH -Value $newpath
+
+##Git
+$p = [Environment]::GetEnvironmentVariable("Path")
+$exepath = "C:\Program Files\Git\bin\git.exe"
+$p += ";$exepath"
+[Environment]::SetEnvironmentVariable("Path", $p)
+$oldpath = (Get-ItemProperty -Path 'Registry::HKEY_LOCAL_MACHINE\System\CurrentControlSet\Control\Session Manager\Environment' -Name PATH).path
+$newpath = "$oldpath;$exepath"
+Set-ItemProperty -Path 'Registry::HKEY_LOCAL_MACHINE\System\CurrentControlSet\Control\Session Manager\Environment' -Name PATH -Value $newpath
+$p = [Environment]::GetEnvironmentVariable("Path")
+$exepath = "C:\Program Files\Git\cmd"
+$p += ";$exepath"
+[Environment]::SetEnvironmentVariable("Path", $p)
+$oldpath = (Get-ItemProperty -Path 'Registry::HKEY_LOCAL_MACHINE\System\CurrentControlSet\Control\Session Manager\Environment' -Name PATH).path
+$newpath = "$oldpath;$exepath"
+Set-ItemProperty -Path 'Registry::HKEY_LOCAL_MACHINE\System\CurrentControlSet\Control\Session Manager\Environment' -Name PATH -Value $newpath
+
+##Floss
+$p = [Environment]::GetEnvironmentVariable("Path")
+$exepath = "c:\windows\system32\floss.exe"
+$p += ";$exepath"
+[Environment]::SetEnvironmentVariable("Path", $p)
+$oldpath = (Get-ItemProperty -Path 'Registry::HKEY_LOCAL_MACHINE\System\CurrentControlSet\Control\Session Manager\Environment' -Name PATH).path
+$newpath = "$oldpath;$exepath"
+Set-ItemProperty -Path 'Registry::HKEY_LOCAL_MACHINE\System\CurrentControlSet\Control\Session Manager\Environment' -Name PATH -Value $newpath
+
 # Install VPN
 Write-Host "[+] Installing nordvpn" -ForegroundColor Green
 Write-Warning "Wait for installs to complete then hit enter to continue through the pause!"
