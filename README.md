@@ -20,7 +20,6 @@
     - [Malwareoverview](https://github.com/alexandreborges/malwoverview)
 - [Retoolkit](https://github.com/mentebinaria/retoolkit)
 - [SysInternals](https://learn.microsoft.com/en-us/sysinternals/)
-- [Tor](https://www.torproject.org/download/)
 - [Wireshark - winpcap](https://www.wireshark.org/)
 - [vscode](https://code.visualstudio.com/)
 
