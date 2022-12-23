@@ -126,7 +126,7 @@ curl.exe https://downloads.nordcdn.com/apps/windows/NordVPN/latest/NordVPNSetup.
 .\vpn.exe /SP- /VERYSILENT /NORESTART /FORCECLOSEAPPLICATIONS
 Pause
 Write-Host "Login to the VPN, set network isolation settings, connection > invisible on LAN, vpn killswitch, and disable threat protection!" -ForegroundColor Green
-Write-Host "Continue once vpn is connected"
+Write-Host "Continue once vpn is connected" -ForegroundColor Green
 Pause
 
 # Closeing Statement
