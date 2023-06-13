@@ -1,7 +1,7 @@
  # SandboxToolkit
 
 - ONLY RUN THIS IN A VOLATILE VM
-- This Sandbox offers no added security against malware escaping the environment. Use at your own risk and understand what you are executing prior to triggering a payload.
+- These deployment scripts offers no added security against malware escaping the environment. Use at your own risk and understand what you are executing prior to triggering a payload.
 - This is a sandbox vm prep script to be run within Windows Sandbox vm. Will use 10-20 GB of Free Space and clear when completed.
 - The intended purpose is for malware analysis
 - Written shell messages will be shown for any manual setup steps requiring interaction. These will be presented during pauses in the script.
