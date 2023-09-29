@@ -88,11 +88,11 @@ Remove-Item "$env:userprofile\desktop\floss-v2.1.0-windows.zip" -Force
 
 #Install Tools
 Write-Host "[+] Installing git, Google Chrome, Oh-My-Posh, Lockhunter, python, sysinternals, vscode, and wireshark" -ForegroundColor Green
-[string[]]$wingetlist = "Google Chrome", "JanDeDobbeleer.OhMyPosh", "lockhunter", "vscode", "wireshark"
+[string[]]$wingetlist = "Google Chrome", "JanDeDobbeleer.OhMyPosh", "lockhunter", "npcap", "vscode"
 foreach ($install in $wingetlist) {
     winget install $install --accept-package-agreements --accept-source-agreements
 }
-. "C:\ProgramData\chocolatey\choco.exe" install winpcap, sysinternals, git -y --limitoutput
+. "C:\ProgramData\chocolatey\choco.exe" install  wireshark, sysinternals, git -y --limitoutput
 . "C:\ProgramData\chocolatey\choco.exe" install python --version 3.11.0 -y --limitoutput
 Copy-Item "C:\ProgramData\Microsoft\Windows\Start Menu\Programs\Wireshark.lnk" $env:userprofile\desktop\Wireshark.lnk
 Copy-Item "C:\Users\WDAGUtilityAccount\AppData\Roaming\Microsoft\Windows\Start Menu\Programs\Visual Studio Code\Visual Studio Code.lnk" $env:userprofile\desktop\VSCode.lnk
