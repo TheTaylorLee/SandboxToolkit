@@ -57,6 +57,7 @@ Function Invoke-Deploy {
     start-process "powershell.exe" -ArgumentList "-executionpolicy unrestricted", "-File $env:userprofile\desktop\github\SandboxToolkit\SandboxToolkit-main\scripts\1-Install-PSPortable.ps1" -wait
     start-process "powershell.exe" -ArgumentList "-executionpolicy unrestricted", "-File $env:userprofile\desktop\github\SandboxToolkit\SandboxToolkit-main\scripts\2-Install-PackageManagers.ps1" -wait
     start-process "powershell.exe" -ArgumentList "-executionpolicy unrestricted", "-File $env:userprofile\desktop\github\SandboxToolkit\SandboxToolkit-main\scripts\3-Install-Packages.ps1"
+    Write-Warning "Don't continue past this pause until all other scripts complete or you have read and remebered the above instructions."
     pause
 }; Clear-Host; Invoke-Deploy
 ```
