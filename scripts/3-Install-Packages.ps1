@@ -90,7 +90,7 @@ Remove-Item "$env:userprofile\desktop\floss-v2.1.0-windows.zip" -Force
 Write-Host "[+] Installing git, Google Chrome, Oh-My-Posh, Lockhunter, python, sysinternals, vscode, and wireshark" -ForegroundColor Green
 [string[]]$wingetlist = "Google Chrome", "JanDeDobbeleer.OhMyPosh", "lockhunter", "npcap", "sysinternals", "vscode"
 foreach ($install in $wingetlist) {
-    winget install $install --accept-package-agreements --accept-source-agreements --locale us
+    winget install $install --accept-package-agreements --accept-source-agreements
 }
 . "C:\ProgramData\chocolatey\choco.exe" install  wireshark, git -y --limitoutput
 . "C:\ProgramData\chocolatey\choco.exe" install python --version 3.11.0 -y --limitoutput
