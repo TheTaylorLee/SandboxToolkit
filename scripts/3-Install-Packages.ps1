@@ -124,7 +124,7 @@ Write-Warning "Wait for installs to complete then hit enter to continue through 
 Set-Location $env:userprofile\downloads
 curl.exe https://downloads.nordcdn.com/apps/windows/NordVPN/latest/NordVPNSetup.exe --output vpn.exe
 .\vpn.exe /SP- /VERYSILENT /NORESTART /FORCECLOSEAPPLICATIONS
-Pause
+Write-Host "If using Nordvpn follow the below steps post instalation" -ForegroundColor Magenta
 Write-Host "Login to the VPN, set network isolation settings, connection > invisible on LAN, vpn killswitch, and disable threat protection!" -ForegroundColor Green
 Write-Host "Continue once vpn is connected" -ForegroundColor Green
 Pause
