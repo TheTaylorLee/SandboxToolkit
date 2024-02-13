@@ -92,6 +92,7 @@ Write-Host "[+] Installing git, Google Chrome, Oh-My-Posh, Lockhunter, python, s
 foreach ($install in $wingetlist) {
     winget install $install --accept-package-agreements --accept-source-agreements
 }
+winget install thunderbird --accept-package-agreements --accept-source-agreements -s winget
 . "C:\ProgramData\chocolatey\choco.exe" install  wireshark, git -y --limitoutput
 . "C:\ProgramData\chocolatey\choco.exe" install python --version 3.11.0 -y --limitoutput
 Copy-Item "C:\ProgramData\Microsoft\Windows\Start Menu\Programs\Wireshark.lnk" $env:userprofile\desktop\Wireshark.lnk
