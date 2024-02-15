@@ -63,7 +63,7 @@ explorer.exe
 
 # Install Fonts
 Write-Host "[+] Installing Fonts" -ForegroundColor Green
-. "C:\ProgramData\PS7x64\PS7-x64\profile_snippets\font\MesloLGMNerdFont-Regular.ttf"
+. "C:\ProgramData\PS7x64\PS7-x64\profile_snippets\font\MesloLGMNerdFontMono-Regular.ttf"
 
 #Install Detect it Easy (DIE)
 Write-Host "[+] Downloading DIE - Detect it Easy" -ForegroundColor Green
