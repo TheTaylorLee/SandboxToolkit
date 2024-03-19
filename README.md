@@ -27,6 +27,7 @@
 
 # How to Use
 - Run this in an Admin Powershell Window
+- ONLY RUN THIS IN A WINDOWS SANDBOX VM
 
 ```Powershell
 New-Item $env:userprofile\desktop\logs -itemtype Directory
