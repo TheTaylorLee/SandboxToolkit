@@ -22,6 +22,7 @@
     - [Malwareoverview](https://github.com/alexandreborges/malwoverview)
 - [Retoolkit](https://github.com/mentebinaria/retoolkit)
 - [SysInternals](https://learn.microsoft.com/en-us/sysinternals/)
+- [Thunderbird](https://www.thunderbird.net/)
 - [Wireshark - winpcap](https://www.wireshark.org/)
 - [vscode](https://code.visualstudio.com/)
 
