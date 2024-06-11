@@ -19,4 +19,5 @@ $url = "https://github.com/marticliment/WingetUI/releases/latest/download/Winget
 $outputPath = "$env:userprofile\downloads\WingetUI.Installer.exe"
 Start-BitsTransfer -Source $url -Destination $outputPath
 . $outputPath /silent
+taskkill /im wingetui.exe
 Exit
