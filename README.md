@@ -63,7 +63,7 @@ Function Invoke-Deploy {
 }; Clear-Host; Invoke-Deploy
 ```
 
-# WingetUI
+# WingetUI for installing additional tools manually
 If needing only a couple tools to examine a file, [WingetUI](https://github.com/marticliment/WingetUI) can be used to quickly install those.
 
 ```pwsh
