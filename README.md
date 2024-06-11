@@ -62,3 +62,6 @@ Function Invoke-Deploy {
     Write-Warning "Don't close this window until you have completed the instructions or you have read and remebered them."
 }; Clear-Host; Invoke-Deploy
 ```
+
+# WingetUI
+If just needing a single tool to examine a file consider [WingetUI](https://github.com/marticliment/WingetUI)
