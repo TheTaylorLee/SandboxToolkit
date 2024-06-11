@@ -64,4 +64,11 @@ Function Invoke-Deploy {
 ```
 
 # WingetUI
-If just needing a single tool to examine a file consider [WingetUI](https://github.com/marticliment/WingetUI)
+If needing only a couple tools to examine a file, [WingetUI](https://github.com/marticliment/WingetUI) can be used to quickly install those.
+
+```pwsh
+$url = "https://github.com/marticliment/WingetUI/releases/latest/download/WingetUI.Installer.exe"
+$outputPath = "$env:userprofile\downloads\WingetUI.Installer.exe"
+Start-BitsTransfer -Source $url -Destination $outputPath
+. $outputPath /silent
+```
