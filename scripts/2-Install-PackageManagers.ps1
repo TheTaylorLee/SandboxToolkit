@@ -13,10 +13,10 @@ Add-AppxPackage MicrosoftDesktopAppInstaller_8wekyb3d8bbwe.msixbundle
 #Chocolately
 $downloadUrl = 'https://chocolatey.org/install.ps1'
 Invoke-Expression ((New-Object System.Net.WebClient).DownloadString($downloadUrl))
-Exit
 
 # Install Wingetui
 $url = "https://github.com/marticliment/WingetUI/releases/latest/download/WingetUI.Installer.exe"
 $outputPath = "$env:userprofile\downloads\WingetUI.Installer.exe"
 Start-BitsTransfer -Source $url -Destination $outputPath
 . $outputPath /silent
+Exit
