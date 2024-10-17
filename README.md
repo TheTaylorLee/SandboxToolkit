@@ -37,11 +37,10 @@ Function Invoke-Deploy {
     # Opening Statement
     Write-Host "    READ THESE NOTES" -ForegroundColor Yellow
     Write-Host "
-    1. After font install, set meslo font as the default font for the shell
-    2. When all scripts finish running, it's best to close powershell, and use pwsh or shell of choice. This ensures all installed exe's are in path.
-    3. When asked to pick a default browser choose Chrome. Useful if using Nordvpn.
-    4. Be patient some steps take longer than others.
-    5. When presented install wizards, click through
+    1. When all scripts finish running, it's best to close powershell, and use pwsh or shell of choice. This ensures all installed exe's are in path.
+    2. If asked to pick a default browser choose Chrome. Useful if using Nordvpn.
+    3. Be patient some steps take longer than others.
+    4. When presented install wizards or install choices interaction is required.
     " -ForegroundColor Green
     Pause
 
