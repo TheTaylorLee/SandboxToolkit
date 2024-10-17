@@ -16,6 +16,7 @@
 - [Google Chrome](https://www.google.com/chrome/)
 - [Lockhunter](https://lockhunter.com/)
 - [Nordvpn](https://nordvpn.com/nord-deal-site/)
+- [PSPortable](https://github.com/TheTaylorLee/PSPortable)
 - [Python](https://www.python.org/)
     - [pyWhat](https://github.com/bee-san/pyWhat)
     - [Malwareoverview](https://github.com/alexandreborges/malwoverview)
@@ -64,9 +65,8 @@ Function Invoke-Deploy {
 
     #Runs scripts
     Write-Host "Running Install Scripts" -foregroundcolor Green
-    start-process "powershell.exe" -ArgumentList "-executionpolicy unrestricted", "-File $env:userprofile\desktop\github\SandboxToolkit\SandboxToolkit-main\scripts\1-Install-PSPortable.ps1" -wait
-    start-process "powershell.exe" -ArgumentList "-executionpolicy unrestricted", "-File $env:userprofile\desktop\github\SandboxToolkit\SandboxToolkit-main\scripts\2-Install-PackageManagers.ps1" -wait
-    start-process "powershell.exe" -ArgumentList "-executionpolicy unrestricted", "-File $env:userprofile\desktop\github\SandboxToolkit\SandboxToolkit-main\scripts\3-Install-Packages.ps1"
+    start-process "powershell.exe" -ArgumentList "-executionpolicy unrestricted", "-File $env:userprofile\desktop\github\SandboxToolkit\SandboxToolkit-main\scripts\1-Install-PackageManagers.ps1" -wait
+    start-process "powershell.exe" -ArgumentList "-executionpolicy unrestricted", "-File $env:userprofile\desktop\github\SandboxToolkit\SandboxToolkit-main\scripts\2-Install-Packages.ps1"
     Write-Warning "Don't close this window until you have completed the instructions or you have read and remebered them."
 }; Clear-Host; Invoke-Deploy
 ```

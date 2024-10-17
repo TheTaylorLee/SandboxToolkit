@@ -1,5 +1,8 @@
 Start-Transcript "$env:userprofile\desktop\logs\3-Install-Packages.log"
 
+# Set Execution Policy
+Set-ExecutionPolicy Unrestricted -Confirm:$false -Force
+
 function Invoke-Unzip {
     <#
 .DESCRIPTION
@@ -91,7 +94,8 @@ Write-Host "    7. Wireshark - Network protocol analyzer" -ForegroundColor Cyan
 Write-Host "    8. Mozilla Thunderbird - Email client for safely viewing malicious emails in sandbox" -ForegroundColor Cyan
 Write-Host "    9. pyWhat - Identify what obscure strings are. Not just code" -ForegroundColor Cyan
 Write-Host "    10. NordVPN - VPN for not leaking your IP address when analyzing malware" -ForegroundColor Cyan
-Write-Host "    11. Malwoverview - First response hash and behavioral analysis" -ForegroundColor Cyan
+Write-Host "    11. PSPortable - Portable PS7 with useful modules" -ForegroundColor Cyan
+Write-Host "    12. Malwoverview - First response hash and behavioral analysis" -ForegroundColor Cyan
 Write-Host " "
 
 # Read user input
@@ -165,6 +169,13 @@ switch -Wildcard ($choices) {
         Pause
     }
     { $_ -contains '11' -or $_ -contains '0' } {
+        Write-Host "[+] Installing PSPortable" -ForegroundColor Green
+        [Net.ServicePointManager]::SecurityProtocol = [Net.SecurityProtocolType]::Tls12
+        (Invoke-WebRequest https://raw.githubusercontent.com/TheTaylorLee/PSPortable/main/Deploy-PSPortableLight.ps1 -UseBasicParsing).content | Invoke-Expression
+        Copy-Item "C:\ProgramData\PS7x64\PS7-x64\pwsh.exe.lnk" "$env:userprofile\desktop\pwsh.exe.lnk"
+        taskkill.exe /im pwsh.exe /f
+    }
+    { $_ -contains '12' -or $_ -contains '0' } {
         # Clone Repositories (Malwareoverview, ...)
         Write-Host "[+] Cloning malwareoverview" -ForegroundColor Green
         Set-Location "$env:userprofile\desktop\github"
