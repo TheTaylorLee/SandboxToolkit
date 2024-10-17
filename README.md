@@ -25,6 +25,16 @@
 - [Wireshark - winpcap](https://www.wireshark.org/)
 - [vscode](https://code.visualstudio.com/)
 
+# WingetUI for installing additional tools manually
+If needing only a couple tools to examine a file, [WingetUI](https://github.com/marticliment/WingetUI) can be used to quickly install those.
+
+```pwsh
+$url = "https://github.com/marticliment/WingetUI/releases/latest/download/WingetUI.Installer.exe"
+$outputPath = "$env:userprofile\downloads\WingetUI.Installer.exe"
+Start-BitsTransfer -Source $url -Destination $outputPath
+. $outputPath /silent
+```
+
 # How to Use
 - Run this in an Admin Powershell Window
 - ONLY RUN THIS IN A WINDOWS SANDBOX VM
@@ -59,14 +69,4 @@ Function Invoke-Deploy {
     start-process "powershell.exe" -ArgumentList "-executionpolicy unrestricted", "-File $env:userprofile\desktop\github\SandboxToolkit\SandboxToolkit-main\scripts\3-Install-Packages.ps1"
     Write-Warning "Don't close this window until you have completed the instructions or you have read and remebered them."
 }; Clear-Host; Invoke-Deploy
-```
-
-# WingetUI for installing additional tools manually
-If needing only a couple tools to examine a file, [WingetUI](https://github.com/marticliment/WingetUI) can be used to quickly install those.
-
-```pwsh
-$url = "https://github.com/marticliment/WingetUI/releases/latest/download/WingetUI.Installer.exe"
-$outputPath = "$env:userprofile\downloads\WingetUI.Installer.exe"
-Start-BitsTransfer -Source $url -Destination $outputPath
-. $outputPath /silent
 ```
