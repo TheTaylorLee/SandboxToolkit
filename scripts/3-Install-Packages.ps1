@@ -65,7 +65,7 @@ explorer.exe
 Write-Host "[+] Installing packages required for other workflows. Chrome, git & python 3.11" -ForegroundColor Green
 . "C:\ProgramData\chocolatey\choco.exe" install git -y --limitoutput
 . "C:\ProgramData\chocolatey\choco.exe" install python --version 3.11.0 -y --limitoutput
-winget install "Google Chrome" --accept-package-agreements --accept-source-agreements
+winget install  "Google.Chrome" --accept-package-agreements --accept-source-agreements
 
 # Instructs to set python as default app
 Write-Host "[+] Set Default Python App" -ForegroundColor Green
@@ -79,19 +79,20 @@ cmd /c start %windir%\explorer.exe $env:userprofile\desktop\github\SandboxToolki
 Pause
 
 # Install Application Choices
-Write-Host "Select the applications you want to install (separate choices with commas):"
-Write-Host "0. All - select this option to install all analysis tools in the sanbox"
-Write-Host "1. Detect It Easy - Provides Mime, Hash, Hex, String, and PE File Analysis"
-Write-Host "2. Retoolkit - Provides many reverse engineering tools"
-Write-Host "3. Floss - FLARE Obfuscated String Solver"
-Write-Host "4. Lockhunter - Unlock files in use by other processes"
-Write-Host "5. Sysinternals - Windows system utilities"
-Write-Host "6. VSCode - Visual Studio Code editor"
-Write-Host "7. Wireshark - Network protocol analyzer"
-Write-Host "8. Mozilla Thunderbird - Email client for safely viewing malicious emails in sandbox"
-Write-Host "9. pyWhat - Identify what obscure strings are. Not just code"
-Write-Host "10. NordVPN - VPN for not leaking your IP address when analyzing malware"
-Write-Host "11. Malwoverview - First response hash and behavioral analysis"
+Write-Host "Select the applications you want to install (separate choices with commas):" -ForegroundColor Magenta
+Write-Host "    0. All - select this option to install all analysis tools in the sanbox" -ForegroundColor Cyan
+Write-Host "    1. Detect It Easy - Provides Mime, Hash, Hex, String, and PE File Analysis" -ForegroundColor Cyan
+Write-Host "    2. Retoolkit - Provides many reverse engineering tools" -ForegroundColor Cyan
+Write-Host "    3. Floss - FLARE Obfuscated String Solver" -ForegroundColor Cyan
+Write-Host "    4. Lockhunter - Unlock files in use by other processes" -ForegroundColor Cyan
+Write-Host "    5. Sysinternals - Windows system utilities" -ForegroundColor Cyan
+Write-Host "    6. VSCode - Visual Studio Code editor" -ForegroundColor Cyan
+Write-Host "    7. Wireshark - Network protocol analyzer" -ForegroundColor Cyan
+Write-Host "    8. Mozilla Thunderbird - Email client for safely viewing malicious emails in sandbox" -ForegroundColor Cyan
+Write-Host "    9. pyWhat - Identify what obscure strings are. Not just code" -ForegroundColor Cyan
+Write-Host "    10. NordVPN - VPN for not leaking your IP address when analyzing malware" -ForegroundColor Cyan
+Write-Host "    11. Malwoverview - First response hash and behavioral analysis" -ForegroundColor Cyan
+Write-Host " "
 
 # Read user input
 $userInput = Read-Host "Enter your choices (e.g., 1,3)"
@@ -130,7 +131,7 @@ switch -Wildcard ($choices) {
     }
     { $_ -contains '5' -or $_ -contains '0' } {
         Write-Host "[+] Installing sysinternals" -ForegroundColor Green
-        winget install "sysinternals" --accept-package-agreements --accept-source-agreements
+        winget install "Microsoft.Sysinternals" --accept-package-agreements --accept-source-agreements
     }
     { $_ -contains '6' -or $_ -contains '0' } {
         Write-Host "[+] Installing vscode" -ForegroundColor Green
