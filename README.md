@@ -25,7 +25,7 @@
 - [Wireshark - winpcap](https://www.wireshark.org/)
 - [vscode](https://code.visualstudio.com/)
 
-# WingetUI for installing additional tools manually
+# WingetUI for installing minimal tools
 If needing only a couple tools to examine a file, [WingetUI](https://github.com/marticliment/WingetUI) can be used to quickly install those.
 
 ```pwsh
