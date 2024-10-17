@@ -25,8 +25,8 @@
 - [Wireshark - winpcap](https://www.wireshark.org/)
 - [vscode](https://code.visualstudio.com/)
 
-# WingetUI for installing minimal tools
-If needing only a couple tools to examine a file, [WingetUI](https://github.com/marticliment/WingetUI) can be used to quickly install those.
+# UnigetUI for installing minimal tools
+If needing only a couple tools to examine a file, [WingetUI](https://github.com/marticliment/UnigetUI) can be used to quickly install those.
 
 ```pwsh
 $url = "https://github.com/marticliment/WingetUI/releases/latest/download/WingetUI.Installer.exe"
@@ -35,8 +35,8 @@ Start-BitsTransfer -Source $url -Destination $outputPath
 . $outputPath /silent
 ```
 
-# How to Use
-- Run this in an Admin Powershell Window
+# How to Use SandboxToolkit as intended
+- Run this in an Admin PowerShell Window
 - ONLY RUN THIS IN A WINDOWS SANDBOX VM
 
 ```Powershell
