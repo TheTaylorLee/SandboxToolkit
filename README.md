@@ -16,7 +16,6 @@
 - [Google Chrome](https://www.google.com/chrome/)
 - [Lockhunter](https://lockhunter.com/)
 - [Nordvpn](https://nordvpn.com/nord-deal-site/)
-- [Oh-My-Posh](https://ohmyposh.dev/)
 - [Python](https://www.python.org/)
     - [pyWhat](https://github.com/bee-san/pyWhat)
     - [Malwareoverview](https://github.com/alexandreborges/malwoverview)
