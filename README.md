@@ -5,7 +5,6 @@
 - This is a sandbox vm prep script to be run within Windows Sandbox vm. Will use 10-20 GB of Free Space and clear when completed.
 - The intended purpose is for malware analysis
 - Written shell messages will be shown for any manual setup steps requiring interaction. These will be presented during pauses in the script.
-- Scripts are ordered in such a way as to avoid issues with any dependencies.
 - The process may seems stuck at times, but it's not. Look for other windows requiring steps. Read the shell it might offer a clue.
 
 ## Installed Tools
