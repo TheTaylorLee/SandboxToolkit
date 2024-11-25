@@ -14,7 +14,6 @@
 - [git](https://git-scm.com/)
 - [Google Chrome](https://www.google.com/chrome/)
 - [Lockhunter](https://lockhunter.com/)
-- [Nordvpn](https://nordvpn.com/nord-deal-site/)
 - [PSPortable](https://github.com/TheTaylorLee/PSPortable)
 - [Python](https://www.python.org/)
     - [pyWhat](https://github.com/bee-san/pyWhat)
