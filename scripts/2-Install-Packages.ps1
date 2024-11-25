@@ -93,9 +93,8 @@ Write-Host "    6. VSCode - Visual Studio Code editor" -ForegroundColor Cyan
 Write-Host "    7. Wireshark - Network protocol analyzer" -ForegroundColor Cyan
 Write-Host "    8. Mozilla Thunderbird - Email client for safely viewing malicious emails in sandbox" -ForegroundColor Cyan
 Write-Host "    9. pyWhat - Identify what obscure strings are. Not just code" -ForegroundColor Cyan
-Write-Host "    10. NordVPN - VPN for not leaking your IP address when analyzing malware" -ForegroundColor Cyan
-Write-Host "    11. PSPortable - Portable PS7 with useful modules" -ForegroundColor Cyan
-Write-Host "    12. Malwoverview - First response hash and behavioral analysis" -ForegroundColor Cyan
+Write-Host "    10. PSPortable - Portable PS7 with useful modules" -ForegroundColor Cyan
+Write-Host "    11. Malwoverview - First response hash and behavioral analysis" -ForegroundColor Cyan
 Write-Host " "
 
 # Read user input
@@ -158,24 +157,13 @@ switch -Wildcard ($choices) {
         . "C:\Python311\Scripts\pip3.exe" install pywhat
     }
     { $_ -contains '10' -or $_ -contains '0' } {
-        Write-Host "[+] Installing nordvpn" -ForegroundColor Green
-        Write-Warning "Wait for installs to complete then hit enter to continue through the pause!"
-        Set-Location $env:userprofile\downloads
-        (New-Object System.Net.WebClient).DownloadFile('https://downloads.nordcdn.com/apps/windows/NordVPN/latest/NordVPNSetup.exe', "$env:userprofile\downloads\vpn.exe")
-        .\vpn.exe /SP- /VERYSILENT /NORESTART /FORCECLOSEAPPLICATIONS
-        Write-Host "If using Nordvpn follow the below steps post installation" -ForegroundColor Magenta
-        Write-Host "Login to the VPN, set network isolation settings, connection > invisible on LAN, vpn killswitch, and disable threat protection!" -ForegroundColor Green
-        Write-Host "Continue once vpn is connected" -ForegroundColor Green
-        Pause
-    }
-    { $_ -contains '11' -or $_ -contains '0' } {
         Write-Host "[+] Installing PSPortable" -ForegroundColor Green
         [Net.ServicePointManager]::SecurityProtocol = [Net.SecurityProtocolType]::Tls12
         (Invoke-WebRequest https://raw.githubusercontent.com/TheTaylorLee/PSPortable/main/Deploy-PSPortableLight.ps1 -UseBasicParsing).content | Invoke-Expression
         Copy-Item "C:\ProgramData\PS7x64\PS7-x64\pwsh.exe.lnk" "$env:userprofile\desktop\pwsh.exe.lnk"
         taskkill.exe /im pwsh.exe /f
     }
-    { $_ -contains '12' -or $_ -contains '0' } {
+    { $_ -contains '11' -or $_ -contains '0' } {
         # Clone Repositories (Malwareoverview, ...)
         Write-Host "[+] Cloning malwareoverview" -ForegroundColor Green
         Set-Location "$env:userprofile\desktop\github"
