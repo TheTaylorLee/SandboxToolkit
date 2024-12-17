@@ -68,7 +68,7 @@ explorer.exe
 Write-Host "[+] Installing packages required for other workflows. Chrome, git & python 3.11" -ForegroundColor Green
 . "C:\ProgramData\chocolatey\choco.exe" install git -y --limitoutput
 . "C:\ProgramData\chocolatey\choco.exe" install python --version 3.11.0 -y --limitoutput
-winget install  "Google.Chrome" --accept-package-agreements --accept-source-agreements
+winget install  "Google.Chrome" --accept-package-agreements --accept-source-agreements -s winget
 
 # Instructs to set python as default app
 Write-Host "[+] Set Default Python App" -ForegroundColor Green
