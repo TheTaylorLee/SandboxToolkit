@@ -12,7 +12,6 @@ Expand-Archive -Path "$env:userprofile\downloads\microsoft.ui.xaml.2.7.3.zip" -D
 Add-AppxPackage -Path "$env:userprofile\downloads\microsoft.ui.xaml.2.7.3\tools\AppX\x64\Release\Microsoft.UI.Xaml.2.7.appx"
 Add-AppxPackage Microsoft.VCLibs.x64.14.00.Desktop.appx
 Add-AppxPackage MicrosoftDesktopAppInstaller_8wekyb3d8bbwe.msixbundle
-winget source reset --force
 
 #Chocolately
 $downloadUrl = 'https://chocolatey.org/install.ps1'
