@@ -67,7 +67,7 @@ explorer.exe
 # Install required software for multipile tools.
 Write-Host "[+] Installing packages required for other workflows. Chrome, git & python 3.11" -ForegroundColor Green
 . "C:\ProgramData\chocolatey\choco.exe" install git -y --limitoutput
-. "C:\ProgramData\chocolatey\choco.exe" install python --version 3.11.0 -y --limitoutput
+. "C:\ProgramData\chocolatey\choco.exe" install python --version 3.13.3 -y --limitoutput
 winget install  "Google.Chrome" --accept-package-agreements --accept-source-agreements -s winget
 
 # Instructs to set python as default app
@@ -75,7 +75,7 @@ Write-Host "[+] Set Default Python App" -ForegroundColor Green
 Write-Host "
 You must set the file association for python right now.
     In the just opened explorer window right click default.py extension open it's properties.
-    Change the default app to open with c:\python311\python.exe, and select always
+    Change the default app to open with c:\python313\python.exe, and select always
     Then close that explorer window and continue through the pause
 " -ForegroundColor Yellow
 cmd /c start %windir%\explorer.exe $env:userprofile\desktop\github\SandboxToolkit\SandboxToolkit-main
@@ -130,20 +130,23 @@ switch -Wildcard ($choices) {
     }
     { $_ -contains '4' -or $_ -contains '0' } {
         Write-Host "[+] Installing Lockhunter" -ForegroundColor Green
-        winget install "lockhunter" --accept-package-agreements --accept-source-agreements
+        #winget install "lockhunter" --accept-package-agreements --accept-source-agreements
+        . "C:\ProgramData\chocolatey\choco.exe" install lockhunter -y --limitoutput --ignore-checksums
     }
     { $_ -contains '5' -or $_ -contains '0' } {
         Write-Host "[+] Installing sysinternals" -ForegroundColor Green
-        winget install "Microsoft.Sysinternals" --accept-package-agreements --accept-source-agreements
+        #winget install "Microsoft.Sysinternals" --accept-package-agreements --accept-source-agreements
+        . "C:\ProgramData\chocolatey\choco.exe" install Sysinternals -y --limitoutput --ignore-checksums
     }
     { $_ -contains '6' -or $_ -contains '0' } {
         Write-Host "[+] Installing vscode" -ForegroundColor Green
-        winget install "vscode" --accept-package-agreements --accept-source-agreements
+        #winget install "vscode" --accept-package-agreements --accept-source-agreements
+        . "C:\ProgramData\chocolatey\choco.exe" install vscode -y --limitoutput --ignore-checksums
         Copy-Item "C:\Users\WDAGUtilityAccount\AppData\Roaming\Microsoft\Windows\Start Menu\Programs\Visual Studio Code\Visual Studio Code.lnk" $env:userprofile\desktop\VSCode.lnk
     }
     { $_ -contains '7' -or $_ -contains '0' } {
         Write-Host "[+] Installing wireshark" -ForegroundColor Green
-        winget install "npcap" --accept-package-agreements --accept-source-agreements
+        winget install "npcap" --accept-package-agreements --accept-source-agreements -s winget
         . "C:\ProgramData\chocolatey\choco.exe" install  wireshark -y --limitoutput
         Copy-Item "C:\ProgramData\Microsoft\Windows\Start Menu\Programs\Wireshark.lnk" $env:userprofile\desktop\Wireshark.lnk
     }
@@ -154,7 +157,7 @@ switch -Wildcard ($choices) {
     { $_ -contains '9' -or $_ -contains '0' } {
         # Install pywhat
         Write-Host "[+] Installing pyWhat" -ForegroundColor Green
-        . "C:\Python311\Scripts\pip3.exe" install pywhat
+        . "C:\Python313\Scripts\pip3.exe" install pywhat
     }
     { $_ -contains '10' -or $_ -contains '0' } {
         Write-Host "[+] Installing PSPortable" -ForegroundColor Green
