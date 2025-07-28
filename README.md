@@ -25,7 +25,7 @@
 - [vscode](https://code.visualstudio.com/)
 
 # UnigetUI for installing minimal tools
-If needing only a couple tools to examine a file, [WingetUI](https://github.com/marticliment/UnigetUI) can be used to quickly install those.
+If needing only a couple tools to examine a file, [UnigetUI](https://github.com/marticliment/UnigetUI) can be used to quickly install those.
 
 ```pwsh
 $url = "https://github.com/marticliment/WingetUI/releases/latest/download/WingetUI.Installer.exe"
