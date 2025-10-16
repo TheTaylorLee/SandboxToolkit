@@ -58,11 +58,11 @@ https://github.com/TheTaylorLee/AdminToolbox
 
 # Instructs to set python as default app
 Write-Host "[+] Set Default Python App" -ForegroundColor Green
-Write-Host "
+Write-Warning "
 You must set the file association for python right now.
     In the just opened explorer window right click default.py extension open it's properties.
     Change the default app to open with c:\python313\python.exe, and select always
-    Then close that explorer window and continue through the pause
+    Then close that explorer window and continue through the pause. If the install is still running wait for it to finish.
 " -ForegroundColor Yellow
 cmd /c start %windir%\explorer.exe C:\temp\SandboxToolkit\
 Pause
