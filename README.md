@@ -48,7 +48,7 @@ Function Invoke-Deploy {
     Write-Host "
     1. When all scripts finish running, it's best to close powershell, and use pwsh or shell of choice. This ensures all installed exe's are in path.
     2. If asked to pick a default browser choose Chrome. Useful if using Nordvpn.
-    3. Be patient some steps take longer than others.
+    3. Be patient some steps take longer than others. If you hit enter after pasting in the launch windows, you risk skipping required steps by inserting null responses.
     4. When presented install wizards or install choices interaction is required.
     " -ForegroundColor Green
     Pause
