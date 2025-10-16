@@ -17,5 +17,12 @@ Add-AppxPackage MicrosoftDesktopAppInstaller_8wekyb3d8bbwe.msixbundle
 $downloadUrl = 'https://chocolatey.org/install.ps1'
 Invoke-Expression ((New-Object System.Net.WebClient).DownloadString($downloadUrl))
 
+# Wingetui
+$url = "https://github.com/marticliment/WingetUI/releases/latest/download/WingetUI.Installer.exe"
+$outputPath = "$env:userprofile\downloads\WingetUI.Installer.exe"
+Start-BitsTransfer -Source $url -Destination $outputPath
+Start-Process $outputPath /silent -Wait
+
+
 Write-Host "Installing Required Packages" -ForegroundColor Green
 Start-Process "powershell.exe" -ArgumentList "-executionpolicy unrestricted", "-File C:\temp\SandboxToolkit\scripts\3-setup-required-changes.ps1"
