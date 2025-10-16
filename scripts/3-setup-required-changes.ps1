@@ -65,7 +65,7 @@ taskkill.exe /im explorer.exe /f
 explorer.exe
 
 # Install required software for multipile tools.
-Write-Host "[+] Installing packages required for other workflows. git & python 3.11" -ForegroundColor Green
+Write-Host "[+] Installing packages required for other workflows. git & python 3.13.3" -ForegroundColor Green
 . "C:\ProgramData\chocolatey\choco.exe" install git -y --limitoutput
 . "C:\ProgramData\chocolatey\choco.exe" install python --version 3.13.3 -y
 
