@@ -24,4 +24,6 @@ function Invoke-Deploy {
     Write-Host "Installing Package Managers" -ForegroundColor Green
     Start-Process "powershell.exe" -ArgumentList "-executionpolicy unrestricted", "-File C:\temp\SandboxToolkit\scripts\2-Install-PackageManagers.ps1"
     Write-Warning "Don't close this window until you have completed the instructions or you have read and understood them."
+    Start-Sleep -Seconds 60
+    Pause
 }; Clear-Host; Invoke-Deploy
