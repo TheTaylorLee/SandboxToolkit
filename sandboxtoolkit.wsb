@@ -4,7 +4,7 @@
     <ProtectedClient>Disable</ProtectedClient>
     <PrinterRedirection>Disable</PrinterRedirection>
     <ClipboardRedirection>Enable</ClipboardRedirection>
-    <MemoryInMB>4096</MemoryInMB>
+    <MemoryInMB>8192</MemoryInMB>
     <MappedFolders>
         <MappedFolder>
             <HostFolder>C:\SandboxToolkit</HostFolder>

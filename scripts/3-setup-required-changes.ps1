@@ -67,8 +67,13 @@ explorer.exe
 # Install required software for multipile tools.
 Write-Host "[+] Installing packages required for other workflows. git & python 3.13.3" -ForegroundColor Green
 . "C:\ProgramData\chocolatey\choco.exe" install git -y --limitoutput
-. "C:\ProgramData\chocolatey\choco.exe" install python --version 3.13.3 -y
-
+#. "C:\ProgramData\chocolatey\choco.exe" install python --version 3.13.3 -y --limitoutput
+# Download and install Python 3.13.3 directly
+$pythonUrl = "https://www.python.org/ftp/python/3.13.3/python-3.13.3-amd64.exe"
+$pythonInstaller = "$env:TEMP\python-3.13.3-amd64.exe"
+Invoke-WebRequest -Uri $pythonUrl -OutFile $pythonInstaller
+Write-Warning "Python is super slow to install!!! Gotta be patient."
+. $pythonInstaller /passive InstallAllUsers=1 PrependPath=1 TargetDir="C:\Python313"
 
 Write-Host "Installing Optional Packages" -ForegroundColor Green
 Start-Process "powershell.exe" -ArgumentList "-executionpolicy unrestricted", "-File C:\temp\SandboxToolkit\scripts\4-Install-Optional-Packages.ps1"
