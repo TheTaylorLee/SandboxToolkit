@@ -72,7 +72,6 @@ Write-Host "[+] Installing packages required for other workflows. git & python 3
 $pythonUrl = "https://www.python.org/ftp/python/3.13.3/python-3.13.3-amd64.exe"
 $pythonInstaller = "$env:TEMP\python-3.13.3-amd64.exe"
 Invoke-WebRequest -Uri $pythonUrl -OutFile $pythonInstaller
-Write-Warning "Python is super slow to install!!! Gotta be patient."
 . $pythonInstaller /passive InstallAllUsers=1 PrependPath=1 TargetDir="C:\Python313"
 # Add python to path
 $p = [Environment]::GetEnvironmentVariable("Path")
