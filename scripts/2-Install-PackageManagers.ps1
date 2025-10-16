@@ -16,4 +16,6 @@ Add-AppxPackage MicrosoftDesktopAppInstaller_8wekyb3d8bbwe.msixbundle
 #Chocolately
 $downloadUrl = 'https://chocolatey.org/install.ps1'
 Invoke-Expression ((New-Object System.Net.WebClient).DownloadString($downloadUrl))
-exit
+
+Write-Host "Installing Required Packages" -ForegroundColor Green
+Start-Process "powershell.exe" -ArgumentList "-executionpolicy unrestricted", "-File C:\temp\SandboxToolkit\scripts\3-Install-Packages.ps1"

@@ -22,10 +22,6 @@ function Invoke-Deploy {
 
     #Runs scripts
     Write-Host "Installing Package Managers" -ForegroundColor Green
-    Start-Process "powershell.exe" -ArgumentList "-executionpolicy unrestricted", "-File C:\temp\SandboxToolkit\scripts\2-Install-PackageManagers.ps1" -Wait
-    Write-Host "Installing Required Packages" -ForegroundColor Green
-    Start-Process "powershell.exe" -ArgumentList "-executionpolicy unrestricted", "-File C:\temp\SandboxToolkit\scripts\3-Install-Packages.ps1" -Wait
-    Write-Host "Installing Optional Packages" -ForegroundColor Green
-    Start-Process "powershell.exe" -ArgumentList "-executionpolicy unrestricted", "-File C:\temp\SandboxToolkit\scripts\4-Install-Optional-Packages.ps1" -Wait
-    Write-Warning "Don't close this window until you have completed the instructions or you have read and remembered them."
+    Start-Process "powershell.exe" -ArgumentList "-executionpolicy unrestricted", "-File C:\temp\SandboxToolkit\scripts\2-Install-PackageManagers.ps1"
+    Write-Warning "Don't close this window until you have completed the instructions or you have read and understood them."
 }; Clear-Host; Invoke-Deploy

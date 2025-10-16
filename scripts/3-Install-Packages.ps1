@@ -68,3 +68,7 @@ explorer.exe
 Write-Host "[+] Installing packages required for other workflows. Chrome, git & python 3.11" -ForegroundColor Green
 . "C:\ProgramData\chocolatey\choco.exe" install git -y --limitoutput
 . "C:\ProgramData\chocolatey\choco.exe" install python --version 3.13.3 -y --limitoutput
+
+
+Write-Host "Installing Optional Packages" -ForegroundColor Green
+Start-Process "powershell.exe" -ArgumentList "-executionpolicy unrestricted", "-File C:\temp\SandboxToolkit\scripts\4-Install-Optional-Packages.ps1"
