@@ -1,0 +1,18 @@
+<Configuration>
+    <VGpu>Disable</VGpu>
+    <Networking>Enable</Networking>
+    <ProtectedClient>Disable</ProtectedClient>
+    <PrinterRedirection>Disable</PrinterRedirection>
+    <ClipboardRedirection>Enable</ClipboardRedirection>
+    <MemoryInMB>4096</MemoryInMB>
+    <MappedFolders>
+        <MappedFolder>
+            <HostFolder>C:\SandboxToolkit</HostFolder>
+            <SandboxFolder>C:\Users\WDAGUtilityAccount\Github\SandboxToolkit</SandboxFolder>
+            <ReadOnly>true</ReadOnly>
+        </MappedFolder>
+    </MappedFolders>
+    <LogonCommand>
+        <Command>powershell.exe -ExecutionPolicy Bypass -File C:\Users\WDAGUtilityAccount\Github\SandboxToolkit\scripts\0-wsb-Entry.ps1</Command>
+    </LogonCommand>
+</Configuration>
