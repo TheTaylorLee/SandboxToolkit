@@ -1,4 +1,4 @@
-Start-Transcript "$env:userprofile\desktop\logs\3-Install-Packages.log"
+Start-Transcript "$env:userprofile\desktop\logs\4-Install-Optional-Packages.log"
 
 # Set Execution Policy
 Set-ExecutionPolicy Unrestricted -Confirm:$false -Force
@@ -56,20 +56,6 @@ https://github.com/TheTaylorLee/AdminToolbox
 # Tls settings
 [Net.ServicePointManager]::SecurityProtocol = [Net.SecurityProtocolType]::Tls12
 
-# Configure explorer view
-Write-Host "[+] Unhiding extensions, files/folders, and protected files so malware can't hide using those methods." -ForegroundColor Green
-reg add HKCU\Software\Microsoft\Windows\CurrentVersion\Explorer\Advanced /v HideFileExt /t REG_DWORD /d 0 /f
-reg add HKCU\Software\Microsoft\Windows\CurrentVersion\Explorer\Advanced /v Hidden /t REG_DWORD /d 1 /f
-reg add HKCU\Software\Microsoft\Windows\CurrentVersion\Explorer\Advanced /v ShowSuperHidden /t REG_DWORD /d 1 /f
-taskkill.exe /im explorer.exe /f
-explorer.exe
-
-# Install required software for multipile tools.
-Write-Host "[+] Installing packages required for other workflows. Chrome, git & python 3.11" -ForegroundColor Green
-. "C:\ProgramData\chocolatey\choco.exe" install git -y --limitoutput
-. "C:\ProgramData\chocolatey\choco.exe" install python --version 3.13.3 -y --limitoutput
-winget install  "Google.Chrome" --accept-package-agreements --accept-source-agreements -s winget
-
 # Instructs to set python as default app
 Write-Host "[+] Set Default Python App" -ForegroundColor Green
 Write-Host "
@@ -78,7 +64,7 @@ You must set the file association for python right now.
     Change the default app to open with c:\python313\python.exe, and select always
     Then close that explorer window and continue through the pause
 " -ForegroundColor Yellow
-cmd /c start %windir%\explorer.exe $env:userprofile\desktop\github\SandboxToolkit\SandboxToolkit-main
+cmd /c start %windir%\explorer.exe C:\temp\SandboxToolkit\
 Pause
 
 # Install Application Choices
@@ -95,6 +81,7 @@ Write-Host "    8. Mozilla Thunderbird - Email client for safely viewing malicio
 Write-Host "    9. pyWhat - Identify what obscure strings are. Not just code" -ForegroundColor Cyan
 Write-Host "    10. PSPortable - Portable PS7 with useful modules" -ForegroundColor Cyan
 Write-Host "    11. Malwoverview - First response hash and behavioral analysis" -ForegroundColor Cyan
+Write-Host "    12. Google Chrome - Some People Prefer it." -ForegroundColor Cyan
 Write-Host " "
 
 # Read user input
@@ -169,19 +156,24 @@ switch -Wildcard ($choices) {
     { $_ -contains '11' -or $_ -contains '0' } {
         # Clone Repositories (Malwareoverview, ...)
         Write-Host "[+] Cloning malwareoverview" -ForegroundColor Green
-        Set-Location "$env:userprofile\desktop\github"
+        Set-Location "$env:userprofile\desktop"
         . "C:\Program Files\Git\bin\git.exe" clone https://github.com/alexandreborges/malwoverview
 
         Write-Host "
         To use malwoverview, open a new powershell window and run the following. If it doesn't run, then you didn't properly select the default python app to use in previous steps.
-        Set-Location $env:userprofile\desktop\github\malwoverview
+        Set-Location $env:userprofile\desktop\malwoverview
         .\setup.py build
         .\setup.py install
-        Set-Location $env:userprofile\desktop\github\malwoverview\malwoverview
+        Set-Location $env:userprofile\desktop\malwoverview\malwoverview
         .\malwoverview.py" -ForegroundColor Green
+    }
+    { $_ -contains '12' -or $_ -contains '0' } {
+        Write-Host "[+] Installing Google Chrome" -ForegroundColor Green
+        winget install  "Google.Chrome" --accept-package-agreements --accept-source-agreements -s winget
     }
 }
 
 # Closeing Statement
+Write-Warning "If desired this script can be launched agains from PowerShell by dotsourcing. eg. . C:\temp\SandboxToolkit\scripts\4-Install-Optional-Packages.ps1"
 Write-Host "[+] Completed installers and setup is done. All open windows can now be closed and tools used" -ForegroundColor Green
 Pause

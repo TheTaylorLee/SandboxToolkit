@@ -35,36 +35,17 @@ Start-BitsTransfer -Source $url -Destination $outputPath
 ```
 
 # How to Use SandboxToolkit as intended
-- Run this in an Admin PowerShell Window
-- ONLY RUN THIS IN A WINDOWS SANDBOX VM
+- [Git Required](https://git-scm.com/downloads)
+- Clone the Repository to the root of your c:\ and run the windows sandbox config file to launch windows sandbox configured.
+- Optionally modify c:\SandboxToolkit\sandboxtoolkit.wsb with desired [parameters.](https://learn.microsoft.com/en-us/windows/security/application-security/application-isolation/windows-sandbox/windows-sandbox-configure-using-wsb-file)
 
-```Powershell
-New-Item $env:userprofile\desktop\logs -itemtype Directory
-Start-Transcript $env:userprofile\desktop\logs\0-DeployFunction.log
-Function Invoke-Deploy {
+``` pwsh
+set-location c:\
+git clone https://github.com/TheTaylorLee/SandboxToolkit
+```
 
-    # Opening Statement
-    Write-Host "    READ THESE NOTES" -ForegroundColor Yellow
-    Write-Host "
-    1. When all scripts finish running, it's best to close powershell, and use pwsh or shell of choice. This ensures all installed exe's are in path.
-    2. If asked to pick a default browser choose Chrome. Useful if using Nordvpn.
-    3. Be patient some steps take longer than others. If you hit enter after pasting in the launch windows, you risk skipping required steps by inserting null responses.
-    4. When presented install wizards or install choices interaction is required.
-    " -ForegroundColor Green
-    Pause
-
-    # Clone repo and scripts for running
-    Set-ExecutionPolicy Unrestricted -Confirm:$false -Force
-    [Net.ServicePointManager]::SecurityProtocol = [Net.SecurityProtocolType]::Tls12
-    New-Item $env:userprofile\desktop\Github -itemtype directory | out-null
-    (New-Object System.Net.WebClient).DownloadFile('https://github.com/TheTaylorLee/SandboxToolkit/archive/refs/heads/main.zip', "$env:userprofile\desktop\github\SandboxToolkit.zip")
-    Expand-Archive -Path $env:userprofile\desktop\github\SandboxToolkit.zip $env:userprofile\desktop\github\SandboxToolkit
-    Remove-Item $env:userprofile\desktop\github\SandboxToolkit.zip -force | out-null
-
-    #Runs scripts
-    Write-Host "Running Install Scripts" -foregroundcolor Green
-    start-process "powershell.exe" -ArgumentList "-executionpolicy unrestricted", "-File $env:userprofile\desktop\github\SandboxToolkit\SandboxToolkit-main\scripts\1-Install-PackageManagers.ps1" -wait
-    start-process "powershell.exe" -ArgumentList "-executionpolicy unrestricted", "-File $env:userprofile\desktop\github\SandboxToolkit\SandboxToolkit-main\scripts\2-Install-Packages.ps1"
-    Write-Warning "Don't close this window until you have completed the instructions or you have read and remebered them."
-}; Clear-Host; Invoke-Deploy
+### Update SanboxToolkit
+```pwsh
+set-location c:\Sandboxtoolkit
+git pull
 ```
