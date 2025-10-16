@@ -81,7 +81,6 @@ Write-Host "    8. Mozilla Thunderbird - Email client for safely viewing malicio
 Write-Host "    9. pyWhat - Identify what obscure strings are. Not just code" -ForegroundColor Cyan
 Write-Host "    10. PSPortable - Portable PS7 with useful modules" -ForegroundColor Cyan
 Write-Host "    11. Google Chrome - Some People Prefer it." -ForegroundColor Cyan
-Write-Host "    12. Malwoverview - First response hash and behavioral analysis" -ForegroundColor Cyan
 Write-Host " "
 
 # Read user input
@@ -156,20 +155,6 @@ switch -Wildcard ($choices) {
     { $_ -contains '11' -or $_ -contains '0' } {
         Write-Host "[+] Installing Google Chrome" -ForegroundColor Green
         winget install  "Google.Chrome" --accept-package-agreements --accept-source-agreements -s winget
-    }
-    { $_ -contains '12' -or $_ -contains '0' } {
-        # Clone Repositories (Malwareoverview, ...)
-        Write-Host "[+] Cloning malwareoverview" -ForegroundColor Green
-        Set-Location "$env:userprofile\desktop"
-        . "C:\Program Files\Git\bin\git.exe" clone https://github.com/alexandreborges/malwoverview
-
-        Write-Host "
-        To use malwoverview, open a new powershell window and run the following. If it doesn't run, then you didn't properly select the default python app to use in previous steps.
-        Set-Location $env:userprofile\desktop\malwoverview
-        .\setup.py build
-        .\setup.py install
-        Set-Location $env:userprofile\desktop\malwoverview\malwoverview
-        .\malwoverview.py" -ForegroundColor Green
     }
 }
 

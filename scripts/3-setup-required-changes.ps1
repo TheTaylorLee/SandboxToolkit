@@ -74,6 +74,16 @@ $pythonInstaller = "$env:TEMP\python-3.13.3-amd64.exe"
 Invoke-WebRequest -Uri $pythonUrl -OutFile $pythonInstaller
 Write-Warning "Python is super slow to install!!! Gotta be patient."
 . $pythonInstaller /passive InstallAllUsers=1 PrependPath=1 TargetDir="C:\Python313"
+# Add python to path
+$p = [Environment]::GetEnvironmentVariable("Path")
+$FunctionPath = "C:\Python313"
+$p += ";$FunctionPath"
+[Environment]::SetEnvironmentVariable("Path", $p)
+# Add PIP to path
+$p = [Environment]::GetEnvironmentVariable("Path")
+$FunctionPath = "C:\Python313\Scripts"
+$p += ";$FunctionPath"
+[Environment]::SetEnvironmentVariable("Path", $p)
 
 Write-Host "Installing Optional Packages" -ForegroundColor Green
 Start-Process "powershell.exe" -ArgumentList "-executionpolicy unrestricted", "-File C:\temp\SandboxToolkit\scripts\4-Install-Optional-Packages.ps1"

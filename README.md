@@ -17,7 +17,6 @@
 - [PSPortable](https://github.com/TheTaylorLee/PSPortable)
 - [Python](https://www.python.org/)
     - [pyWhat](https://github.com/bee-san/pyWhat)
-    - [Malwareoverview](https://github.com/alexandreborges/malwoverview)
 - [Retoolkit](https://github.com/mentebinaria/retoolkit)
 - [SysInternals](https://learn.microsoft.com/en-us/sysinternals/)
 - [Thunderbird](https://www.thunderbird.net/)
