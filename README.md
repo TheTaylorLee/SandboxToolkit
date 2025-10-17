@@ -24,7 +24,7 @@
 - [Wireshark - winpcap](https://www.wireshark.org/)
 - [vscode](https://code.visualstudio.com/)
 
-# How to Use SandboxToolkit as intended
+# How to Use SandboxToolkit
 - [Git Required](https://git-scm.com/downloads)
 - Clone the Repository to the root of your c:\ and run the windows sandbox config file (c:\SandboxToolkit\sandboxtoolkit.wsb) to launch windows sandbox configured.
 - Optionally modify c:\SandboxToolkit\sandboxtoolkit.wsb with desired [parameters.](https://learn.microsoft.com/en-us/windows/security/application-security/application-isolation/windows-sandbox/windows-sandbox-configure-using-wsb-file)
