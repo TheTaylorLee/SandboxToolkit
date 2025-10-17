@@ -3,25 +3,26 @@ Start-Transcript "$env:userprofile\desktop\logs\4-Install-Optional-Packages.log"
 # Set Execution Policy
 Set-ExecutionPolicy Unrestricted -Confirm:$false -Force
 
+# Functions
 function Invoke-Unzip {
     <#
-.DESCRIPTION
-Provides robust zip file extraction by attempting 3 possible methods.
+    .DESCRIPTION
+    Provides robust zip file extraction by attempting 3 possible methods.
 
-.Parameter zipfile
-Specify the zipfile location and name
+    .Parameter zipfile
+    Specify the zipfile location and name
 
-.Parameter outpath
-Specify the extract path for extracted files
+    .Parameter outpath
+    Specify the extract path for extracted files
 
-.EXAMPLE
-Extracts folder.zip to c:\folder
+    .EXAMPLE
+    Extracts folder.zip to c:\folder
 
-Invoke-Unzip -zipfile c:\folder.zip -outpath c:\folder
+    Invoke-Unzip -zipfile c:\folder.zip -outpath c:\folder
 
-.Link
-https://github.com/TheTaylorLee/AdminToolbox
-#>
+    .Link
+    https://github.com/TheTaylorLee/AdminToolbox
+    #>
 
     [cmdletbinding()]
     param(
@@ -52,22 +53,47 @@ https://github.com/TheTaylorLee/AdminToolbox
         }
     }
 }
+function Install-Python {
+    if ((Test-Path -Path "C:\Python313\python.exe") -eq $false) {
+        Write-Host "[+] Downloading Required Python Package" -ForegroundColor Green
+        #. "C:\ProgramData\chocolatey\choco.exe" install python --version 3.13.3 -y --limitoutput
+        # Add python to path
+        $p = [Environment]::GetEnvironmentVariable("Path")
+        $FunctionPath = "C:\Python313"
+        $p += ";$FunctionPath"
+        [Environment]::SetEnvironmentVariable("Path", $p)
+        # Add PIP to path
+        $p = [Environment]::GetEnvironmentVariable("Path")
+        $FunctionPath = "C:\Python313\Scripts"
+        $p += ";$FunctionPath"
+        [Environment]::SetEnvironmentVariable("Path", $p)
+
+        # Download and install Python 3.13.3 directly
+        $pythonUrl = "https://www.python.org/ftp/python/3.13.3/python-3.13.3-amd64.exe"
+        $pythonInstaller = "$env:TEMP\python-3.13.3-amd64.exe"
+        Invoke-WebRequest -Uri $pythonUrl -OutFile $pythonInstaller
+        . $pythonInstaller /passive InstallAllUsers=1 PrependPath=1 TargetDir="C:\Python313"
+
+
+        # Instructs to set python as default app
+        Write-Host "[+] Set Default Python App" -ForegroundColor Green
+        Write-Warning "
+        Python is super slow to install!!! Gotta be patient.
+
+        You must set the file association for python when the install finishes.
+            In the just opened explorer window right click default.py extension and open it's properties.
+            Change the default app to open with c:\python313\python.exe, and select always
+            Then close that explorer window and continue through the pause.
+        "
+        cmd /c start %windir%\explorer.exe C:\temp\SandboxToolkit\
+        Write-Host "Do not continue until Python Install Finishes" -ForegroundColor Red
+        Pause
+    }
+}
 
 # Tls settings
 [Net.ServicePointManager]::SecurityProtocol = [Net.SecurityProtocolType]::Tls12
 
-# Instructs to set python as default app
-Write-Host "[+] Set Default Python App" -ForegroundColor Green
-Write-Warning "
-Python is super slow to install!!! Gotta be patient.
-
-You must set the file association for python when the install finishes.
-    In the just opened explorer window right click default.py extension and open it's properties.
-    Change the default app to open with c:\python313\python.exe, and select always
-    Then close that explorer window and continue through the pause.
-" -ForegroundColor Yellow
-cmd /c start %windir%\explorer.exe C:\temp\SandboxToolkit\
-Pause
 
 # Install Application Choices
 Write-Host "Select the applications you want to install (separate choices with commas):" -ForegroundColor Magenta
@@ -83,6 +109,8 @@ Write-Host "    8. Mozilla Thunderbird - Email client for safely viewing malicio
 Write-Host "    9. pyWhat - Identify what obscure strings are. Not just code" -ForegroundColor Cyan
 Write-Host "    10. PSPortable - Portable PS7 with useful modules" -ForegroundColor Cyan
 Write-Host "    11. Google Chrome - Some People Prefer it." -ForegroundColor Cyan
+Write-Host "    12. Malwoverview - First response hash and behavioral analysis" -ForegroundColor Cyan
+Write-Host "    13. Winget UI - Graphical Package manager to install other packages" -ForegroundColor Cyan
 Write-Host " "
 
 # Read user input
@@ -115,6 +143,12 @@ switch -Wildcard ($choices) {
         Invoke-Unzip -zipfile $env:userprofile\desktop\floss-v2.1.0-windows.zip -outpath "$env:userprofile\desktop\Floss"
         Copy-Item $env:userprofile\desktop\Floss\floss.exe $env:systemroot\system32
         Remove-Item "$env:userprofile\desktop\floss-v2.1.0-windows.zip" -Force
+
+        # Add floss to path
+        $p = [Environment]::GetEnvironmentVariable("Path")
+        $FunctionPath = "$env:userprofile\desktop\Floss"
+        $p += ";$FunctionPath"
+        [Environment]::SetEnvironmentVariable("Path", $p)
     }
     { $_ -contains '4' -or $_ -contains '0' } {
         Write-Host "[+] Installing Lockhunter" -ForegroundColor Green
@@ -130,7 +164,7 @@ switch -Wildcard ($choices) {
         Write-Host "[+] Installing vscode" -ForegroundColor Green
         #winget install "vscode" --accept-package-agreements --accept-source-agreements
         . "C:\ProgramData\chocolatey\choco.exe" install vscode -y --limitoutput --ignore-checksums
-        Copy-Item "C:\Users\WDAGUtilityAccount\AppData\Roaming\Microsoft\Windows\Start Menu\Programs\Visual Studio Code\Visual Studio Code.lnk" $env:userprofile\desktop\VSCode.lnk
+        #Copy-Item "C:\Users\WDAGUtilityAccount\AppData\Roaming\Microsoft\Windows\Start Menu\Programs\Visual Studio Code\Visual Studio Code.lnk" $env:userprofile\desktop\VSCode.lnk
     }
     { $_ -contains '7' -or $_ -contains '0' } {
         Write-Host "[+] Installing wireshark" -ForegroundColor Green
@@ -143,6 +177,9 @@ switch -Wildcard ($choices) {
         winget install "Mozilla Thunderbird (en-US)" --accept-package-agreements --accept-source-agreements -s winget
     }
     { $_ -contains '9' -or $_ -contains '0' } {
+        # Install Requirement
+        Install-Python
+
         # Install pywhat
         Write-Host "[+] Installing pyWhat" -ForegroundColor Green
         . "C:\Python313\Scripts\pip3.exe" install pywhat
@@ -157,6 +194,31 @@ switch -Wildcard ($choices) {
     { $_ -contains '11' -or $_ -contains '0' } {
         Write-Host "[+] Installing Google Chrome" -ForegroundColor Green
         winget install  "Google.Chrome" --accept-package-agreements --accept-source-agreements -s winget
+    }
+    { $_ -contains '12' -or $_ -contains '0' } {
+        # Clone Repositories (Malwareoverview, ...)
+        Write-Host "[+] Cloning malwareoverview" -ForegroundColor Green
+
+        Install-Python
+
+        Set-Location "$env:userprofile\desktop"
+        . "C:\Program Files\Git\bin\git.exe" clone https://github.com/alexandreborges/malwoverview
+
+        Write-Host "
+        To use malwoverview, open a new powershell window and run the following. If it doesn't run, then you didn't properly select the default python app to use in previous steps.
+        Set-Location $env:userprofile\desktop\malwoverview
+        .\setup.py build
+        .\setup.py install
+        Set-Location $env:userprofile\desktop\malwoverview\malwoverview
+        .\malwoverview.py" -ForegroundColor Green
+    }
+    { $_ -contains '13' -or $_ -contains '0' } {
+        Write-Host "[+] Installing WingetUI" -ForegroundColor Green
+
+        $url = "https://github.com/marticliment/WingetUI/releases/latest/download/WingetUI.Installer.exe"
+        $outputPath = "$env:userprofile\downloads\WingetUI.Installer.exe"
+        Start-BitsTransfer -Source $url -Destination $outputPath
+        . $outputPath /silent
     }
 }
 

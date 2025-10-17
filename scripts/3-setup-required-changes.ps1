@@ -1,27 +1,27 @@
-Start-Transcript "$env:userprofile\desktop\logs\3-Install-Packages.log"
+Start-Transcript "$env:userprofile\desktop\logs\3-setup-required-changes.log"
 
 # Set Execution Policy
 Set-ExecutionPolicy Unrestricted -Confirm:$false -Force
 
 function Invoke-Unzip {
     <#
-.DESCRIPTION
-Provides robust zip file extraction by attempting 3 possible methods.
+    .DESCRIPTION
+    Provides robust zip file extraction by attempting 3 possible methods.
 
-.Parameter zipfile
-Specify the zipfile location and name
+    .Parameter zipfile
+    Specify the zipfile location and name
 
-.Parameter outpath
-Specify the extract path for extracted files
+    .Parameter outpath
+    Specify the extract path for extracted files
 
-.EXAMPLE
-Extracts folder.zip to c:\folder
+    .EXAMPLE
+    Extracts folder.zip to c:\folder
 
-Invoke-Unzip -zipfile c:\folder.zip -outpath c:\folder
+    Invoke-Unzip -zipfile c:\folder.zip -outpath c:\folder
 
-.Link
-https://github.com/TheTaylorLee/AdminToolbox
-#>
+    .Link
+    https://github.com/TheTaylorLee/AdminToolbox
+    #>
 
     [cmdletbinding()]
     param(
@@ -65,15 +65,10 @@ taskkill.exe /im explorer.exe /f
 explorer.exe
 
 # Install required software for multipile tools.
-Write-Host "[+] Installing packages required for other workflows. git & python 3.13.3" -ForegroundColor Green
+Write-Host "[+] Installing packages required for other workflows. git" -ForegroundColor Green
 . "C:\ProgramData\chocolatey\choco.exe" install git -y --limitoutput
-#. "C:\ProgramData\chocolatey\choco.exe" install python --version 3.13.3 -y --limitoutput
-# Download and install Python 3.13.3 directly
-$pythonUrl = "https://www.python.org/ftp/python/3.13.3/python-3.13.3-amd64.exe"
-$pythonInstaller = "$env:TEMP\python-3.13.3-amd64.exe"
-Invoke-WebRequest -Uri $pythonUrl -OutFile $pythonInstaller
-. $pythonInstaller /passive InstallAllUsers=1 PrependPath=1 TargetDir="C:\Python313"
-# Add python to path
+
+# Add python to path (Python may get installed later and this ensures it is already in path.)
 $p = [Environment]::GetEnvironmentVariable("Path")
 $FunctionPath = "C:\Python313"
 $p += ";$FunctionPath"
@@ -84,5 +79,5 @@ $FunctionPath = "C:\Python313\Scripts"
 $p += ";$FunctionPath"
 [Environment]::SetEnvironmentVariable("Path", $p)
 
-Write-Host "Installing Optional Packages" -ForegroundColor Green
+Write-Host "[+] Installing Optional Packages" -ForegroundColor Green
 Start-Process "powershell.exe" -ArgumentList "-executionpolicy unrestricted", "-File C:\temp\SandboxToolkit\scripts\4-Install-Optional-Packages.ps1"

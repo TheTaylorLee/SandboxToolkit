@@ -17,25 +17,16 @@
 - [PSPortable](https://github.com/TheTaylorLee/PSPortable)
 - [Python](https://www.python.org/)
     - [pyWhat](https://github.com/bee-san/pyWhat)
+    - [Malwareoverview](https://github.com/alexandreborges/malwoverview)
 - [Retoolkit](https://github.com/mentebinaria/retoolkit)
 - [SysInternals](https://learn.microsoft.com/en-us/sysinternals/)
 - [Thunderbird](https://www.thunderbird.net/)
 - [Wireshark - winpcap](https://www.wireshark.org/)
 - [vscode](https://code.visualstudio.com/)
 
-# UnigetUI for installing minimal tools
-If needing only a couple tools to examine a file, [UnigetUI](https://github.com/marticliment/UnigetUI) can be used to quickly install those.
-
-```pwsh
-$url = "https://github.com/marticliment/WingetUI/releases/latest/download/WingetUI.Installer.exe"
-$outputPath = "$env:userprofile\downloads\WingetUI.Installer.exe"
-Start-BitsTransfer -Source $url -Destination $outputPath
-. $outputPath /silent
-```
-
 # How to Use SandboxToolkit as intended
 - [Git Required](https://git-scm.com/downloads)
-- Clone the Repository to the root of your c:\ and run the windows sandbox config file to launch windows sandbox configured.
+- Clone the Repository to the root of your c:\ and run the windows sandbox config file (c:\SandboxToolkit\sandboxtoolkit.wsb) to launch windows sandbox configured.
 - Optionally modify c:\SandboxToolkit\sandboxtoolkit.wsb with desired [parameters.](https://learn.microsoft.com/en-us/windows/security/application-security/application-isolation/windows-sandbox/windows-sandbox-configure-using-wsb-file)
 
 ``` pwsh
