@@ -1,4 +1,5 @@
 Start-Transcript "$env:userprofile\desktop\logs\2-Install-PackageManagers.log"
+Write-Host "[+] Installing Package Managers" -ForegroundColor Green
 
 [Net.ServicePointManager]::SecurityProtocol = [Net.SecurityProtocolType]::Tls12
 
