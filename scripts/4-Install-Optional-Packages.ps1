@@ -123,9 +123,10 @@ $choices = $userInput -split ','
 switch -Wildcard ($choices) {
     { $_ -contains '1' -or $_ -contains '0' } {
         #Install Detect it Easy (DIE)
-        Write-Host "[+] Downloading DIE - Detect it Easy" -ForegroundColor Green
+        Write-Host "[+] Downloading DIE - Detect it Easy, and installing required Visual C++ Redistributable." -ForegroundColor Green
         (New-Object System.Net.WebClient).DownloadFile('https://github.com/horsicq/DIE-engine/releases/download/3.06/die_win64_qt6_portable_3.06.zip', "$env:userprofile\desktop\die_win64_qt6_portable_3.06.zip")
         Invoke-Unzip -zipfile $env:userprofile\desktop\die_win64_qt6_portable_3.06.zip -outpath "$env:userprofile\desktop\Detect it Easy"
+        . "C:\ProgramData\chocolatey\choco.exe" install git, vcredist140 -y --limitoutput
         Remove-Item $env:userprofile\desktop\die_win64_qt6_portable_3.06.zip -Force
     }
     { $_ -contains '2' -or $_ -contains '0' } {

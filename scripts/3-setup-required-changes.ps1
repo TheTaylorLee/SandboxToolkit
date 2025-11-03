@@ -65,8 +65,8 @@ taskkill.exe /im explorer.exe /f
 explorer.exe
 
 # Install required software for multipile tools.
-Write-Host "[+] Installing packages required for other workflows. git, vcredist140 (Required by DIE.exe)" -ForegroundColor Green
-. "C:\ProgramData\chocolatey\choco.exe" install git, vcredist140 -y --limitoutput
+Write-Host "[+] Installing packages required for other workflows. git" -ForegroundColor Green
+. "C:\ProgramData\chocolatey\choco.exe" install git -y --limitoutput
 
 # Add python to path (Python may get installed later and this ensures it is already in path.)
 $p = [Environment]::GetEnvironmentVariable("Path")
