@@ -22,6 +22,7 @@
 - [Thunderbird](https://www.thunderbird.net/)
 - [Wireshark - winpcap](https://www.wireshark.org/)
 - [vscode](https://code.visualstudio.com/)
+- [XSTReader](https://github.com/dijji/XstReader)
 
 # How to Use SandboxToolkit
 - [Git Required](https://git-scm.com/downloads)

@@ -111,6 +111,7 @@ Write-Host "    10. PSPortable - Portable PS7 with useful modules" -ForegroundCo
 Write-Host "    11. Google Chrome - Some People Prefer it." -ForegroundColor Cyan
 Write-Host "    12. Malwoverview - First response hash and behavioral analysis" -ForegroundColor Cyan
 Write-Host "    13. Winget UI - Graphical Package manager to install other packages" -ForegroundColor Cyan
+Write-Host "    14. XSTReader - Simple and efficient pst viewer" -ForegroundColor Cyan
 Write-Host " "
 
 # Read user input
@@ -220,6 +221,15 @@ switch -Wildcard ($choices) {
         $outputPath = "$env:userprofile\downloads\WingetUI.Installer.exe"
         Start-BitsTransfer -Source $url -Destination $outputPath
         . $outputPath /silent
+    }
+    { $_ -contains '14' -or $_ -contains '0' } {
+        Write-Host "[+] Downloading XSTReader" -ForegroundColor Green
+
+        $url = "https://github.com/Dijji/XstReader/releases/download/v1.14/XstReader.zip"
+        $outputPath = "$env:userprofile\desktop\XstReader.zip"
+        Start-BitsTransfer -Source $url -Destination $outputPath
+        Invoke-Unzip -zipfile $outputPath -outpath "$env:userprofile\desktop\XstReader"
+        Remove-Item $outputPath -Force
     }
 }
 
